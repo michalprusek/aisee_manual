@@ -1,0 +1,12 @@
+{
+  "name": "aisee-manual",
+  "version": "1.0.0",
+  "description": "AISEE User Manual with hot reload",
+  "scripts": {
+    "dev": "live-server --port=8080 --host=localhost --open=/index.html",
+    "serve": "python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

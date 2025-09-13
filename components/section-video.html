@@ -1,0 +1,134 @@
+        <section id="video" class="mb-12 animate-fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-8 border-b border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <span class="text-xl">🎥</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Práce s videem</h2>
+                    </div>
+                    <p class="text-gray-600 mt-2">Nahrávání, zpracování a ovládání video souborů</p>
+                </div>
+                
+                <div class="p-8 space-y-4">
+                    <!-- Accordion items -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="px-6 py-4 bg-gray-50">
+                            <div class="flex items-center gap-3">
+                                <span class="text-lg">📤</span>
+                                <span class="font-medium text-gray-900">Nahrávání videí</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="p-6 bg-white">
+                                <ol class="space-y-3">
+                                    <li class="flex gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                        <p class="text-sm">Klikněte na záložku "Zdroje" v levém panelu</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                        <p class="text-sm">Použijte tlačítko "+"</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                        <p class="text-sm">Vyberte jeden nebo více video souborů</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                        <p class="text-sm">Nastavte parametry (název, FPS, časový offset)</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-semibold">5</span>
+                                        <p class="text-sm">Potvrďte nahrání tlačítkem "Uložit" (Save) a sledujte průběh</p>
+                                    </li>
+                                </ol>
+
+                                <!-- Screenshot dialogu pro nahrání videa -->
+                                <div class="screenshot-container mt-6">
+                                    <img data-screenshot="video-upload"
+                                         src="screenshots/video-upload/screenshot.png"
+                                         alt="Dialog pro nahrání videa"
+                                         class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                         loading="lazy">
+                                    <p class="text-sm text-gray-500 mt-2 text-center italic">Nastavení parametrů při nahrávání videa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="px-6 py-4 bg-gray-50">
+                            <div class="flex items-center gap-3">
+                                <span class="text-lg">📊</span>
+                                <span class="font-medium text-gray-900">Průběh zpracování</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="p-6 bg-white">
+                                <p class="text-sm text-gray-600 mb-4">Každé video prochází 3 fázemi zpracování. Při nahrání více videí se celkový počet fází násobí:</p>
+                                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Příklad pro 3 videa:</span>
+                                        <span class="text-sm font-mono bg-white px-2 py-1 rounded border border-gray-200">7/9</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-xs font-mono bg-blue-100 text-blue-700 px-2 py-1 rounded">1/3</span>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-700">Příprava videa</p>
+                                            <p class="text-xs text-gray-500">Konverze a optimalizace videa pro zpracování</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-xs font-mono bg-blue-100 text-blue-700 px-2 py-1 rounded">2/3</span>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-700">Hledání objektů</p>
+                                            <p class="text-xs text-gray-500">Detekce a sledování objektů ve videu</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-xs font-mono bg-green-100 text-green-700 px-2 py-1 rounded">3/3</span>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-700">Klasifikace objektů</p>
+                                            <p class="text-xs text-gray-500">Rozpoznání typů objektů a jejich kategorizace</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="px-6 py-4 bg-gray-50">
+                            <div class="flex items-center gap-3">
+                                <span class="text-lg">⌨️</span>
+                                <span class="font-medium text-gray-900">Ovládání přehrávače</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="p-6 bg-white">
+                                <div class="screenshot-container mb-6">
+                                    <img data-screenshot="video-player"
+                                         src="screenshots/video-player/screenshot.png"
+                                         alt="Video přehrávač"
+                                         class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                         loading="lazy">
+                                    <p class="text-sm text-gray-500 mt-2 text-center italic">Oblast video přehrávače s ovládacími prvky</p>
+                                </div>
+
+
+                                <h4 class="font-semibold text-gray-900 mb-3">Ovládání myší</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li>• <strong>Klik levým tlačítkem:</strong> Přemístí posuvník videa na místo kurzoru</li>
+                                    <li>• <strong>Kolečko na timeline:</strong> Zoom časové osy</li>
+                                    <li>• <strong>Tažení timeline:</strong> Rychlá navigace</li>
+                                    <li>• <strong>Pravé tlačítko:</strong> Kontextové menu</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

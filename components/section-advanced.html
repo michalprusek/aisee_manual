@@ -1,0 +1,70 @@
+        <section id="advanced" class="mb-12 animate-fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-8 border-b border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                            <span class="text-xl">⚙️</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Pokročilé funkce</h2>
+                    </div>
+                    <p class="text-gray-600 mt-2">Rozšířené možnosti pro pokročilé uživatele</p>
+                </div>
+                
+                <div class="p-8">
+                    <!-- Advanced tabs -->
+                    <div class="mb-8">
+                        <div class="flex border-b border-gray-200">
+                            <button onclick="showAdvancedTab('training', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-indigo-600 border-b-2 border-indigo-600">
+                                Doučování
+                            </button>
+                        </div>
+                        
+                        <!-- Training tab -->
+                        <div id="training" class="adv-tab-content mt-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Vytvoření vlastní třídy objektů</h3>
+                            
+                            <!-- Screenshot pokročilých funkcí -->
+                            <div class="screenshot-container mb-6">
+                                <img data-screenshot="advanced"
+                                     src="screenshots/advanced/screenshot.png"
+                                     alt="Pokročilé funkce AISEE" 
+                                     class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                     loading="lazy">
+                                <p class="text-sm text-gray-500 mt-2 text-center italic">Rozhraní pro doučování a vytváření vlastních tříd objektů</p>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <span class="text-xl">🎓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-900">Strojové učení</h4>
+                                        <p class="text-sm text-indigo-700 mt-1">Natrénujte vlastní modely pro specifické objekty. Čas trénování: 3-10 minut podle počtu příkladů.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <ol class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                    <p class="text-sm">Přejděte na záložku "Třídy"</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                    <p class="text-sm">Klikněte na "Nová třída"</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                    <p class="text-sm">Pojmenujte třídu (např. "Invalidní vozík")</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                    <p class="text-sm">Stáhněte minimálně 10 obrázků z Google Images, nahrajte je a označte v nich objekty dané třídy</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">5</span>
+                                    <p class="text-sm">Spusťte trénování tlačítkem "Naučit"</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

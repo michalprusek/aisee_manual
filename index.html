@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISEE - Uživatelský manuál</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+    <script src="js/screenshot-loader.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+<div id="header-container"></div>
+
+<!-- Sidebar Navigation -->
+<nav id="sidebar" class="fixed left-4 top-24 w-56">
+    <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200/50 p-4">
+        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Navigace</h3>
+        <div class="space-y-1">
+            <button onclick="scrollToSection('start')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">🚀</span>
+                <span class="nav-text">Začínáme</span>
+            </button>
+            <button onclick="scrollToSection('interface')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">🖥️</span>
+                <span class="nav-text">Rozhraní</span>
+            </button>
+            <button onclick="scrollToSection('video')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">🎥</span>
+                <span class="nav-text">Video</span>
+            </button>
+            <button onclick="scrollToSection('search')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">🔍</span>
+                <span class="nav-text">Vyhledávání</span>
+            </button>
+            <button onclick="scrollToSection('reports')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">📋</span>
+                <span class="nav-text">Reporty</span>
+            </button>
+            <button onclick="scrollToSection('advanced')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">⚙️</span>
+                <span class="nav-text">Pokročilé</span>
+            </button>
+            <button onclick="scrollToSection('faq')" class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-3">
+                <span class="text-xl">❓</span>
+                <span class="nav-text">FAQ</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="ml-64 px-8 py-32">
+    <div class="max-w-4xl mx-auto">
+        <div id="start-container"></div>
+        <div id="interface-container"></div>
+        <div id="video-container"></div>
+        <div id="search-container"></div>
+        <div id="reports-container"></div>
+        <div id="advanced-container"></div>
+        <div id="faq-container"></div>
+    </div>
+</main>
+
+<div id="footer-container"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<section id="start" class="mb-12 animate-fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-8 border-b border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-xl">🚀</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Přihlášení a projekty</h2>
+                    </div>
+                    <p class="text-gray-600 mt-2">Začněte používat AISEE během několika minut</p>
+                </div>
+                
+                <div class="p-8">
+
+                    <!-- Tabs -->
+                    <div class="mb-8">
+                        <div class="flex border-b border-gray-200">
+                            <button onclick="showTab('login', this)" class="tab-btn px-4 py-2 text-sm font-medium text-blue-600 border-b-2 border-blue-600">
+                                Přihlášení
+                            </button>
+                            <button onclick="showTab('projects', this)" class="tab-btn px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900">
+                                Projekty
+                            </button>
+                        </div>
+                        
+                        <!-- Tab content Přihlášení -->
+                        <div id="login" class="tab-content mt-6">
+                            <p class="text-gray-700 mb-4">Pro první přihlášení do systému postupujte následovně:</p>
+                            <ol class="space-y-4 text-gray-700 mb-6">
+                                <li class="flex gap-4">
+                                    <span class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">1</span>
+                                    <p class="pt-1">Otevřete webový prohlížeč a přejděte na adresu: <a href="https://aiseedemo.utia.cas.cz:3000/" target="_blank" class="text-blue-600 hover:underline font-semibold">https://aiseedemo.utia.cas.cz:3000/</a></p>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">2</span>
+                                    <p class="pt-1">Zadejte přihlašovací údaje poskytnuté administrátorem</p>
+                                </li>
+                            </ol>
+
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-blue-900">První přihlášení</h4>
+                                        <p class="text-sm text-blue-700 mt-1">Použijte přihlašovací údaje poskytnuté administrátorem</p>
+                                        
+                                        <!-- Screenshot přihlašovací obrazovky -->
+                                        <div class="mt-4">
+                                            <div class="relative group">
+                                                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                                                <div class="relative bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
+                                                    <img data-screenshot="login" 
+                                                         src="screenshots/login/screenshot.png"
+                                                         alt="AISEE přihlašovací obrazovka" 
+                                                         class="w-full h-auto block screenshot-zoom cursor-pointer"
+                                                         loading="lazy">
+                                                </div>
+                                            </div>
+                                            <p class="text-xs text-gray-600 mt-2 text-center italic">Zadejte přihlašovací údaje pro vstup do systému</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <ol class="space-y-4 text-gray-700 mb-8">
+                                <li class="flex gap-4">
+                                    <span class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">3</span>
+                                    <p class="pt-1">Klikněte na tlačítko "Login"</p>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">4</span>
+                                    <p class="pt-1">Vyberte nebo vytvořte nový projekt</p>
+                                </li>
+                                <!-- Screenshot stránky s projekty -->
+                                <div class="screenshot-container my-4 ml-12">
+                                    <img data-screenshot="project-page"
+                                         src="screenshots/project-page/screenshot.png"
+                                         alt="Stránka s projekty" 
+                                         class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                         loading="lazy">
+                                    <p class="text-sm text-gray-500 mt-2 text-center italic">Stránka pro výběr nebo vytvoření projektu</p>
+                                </div>
+                                <li class="flex gap-4">
+                                    <span class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">5</span>
+                                    <p class="pt-1">Začněte nahrávat a analyzovat videa</p>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <!-- Tab content Projekty -->
+                        <div id="projects" class="tab-content mt-6 hidden">
+                            <p class="text-gray-700 mb-4">Po přihlášení můžete pracovat s projekty:</p>
+                            
+                            <!-- Screenshot project actions -->
+                            <div class="screenshot-container mb-6">
+                                <img data-screenshot="project-actions"
+                                     src="screenshots/project-actions/screenshot.png"
+                                     alt="Akce s projekty" 
+                                     class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                     loading="lazy">
+                                <p class="text-sm text-gray-500 mt-2 text-center italic">Možnosti práce s projekty</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">📁</span>
+                                        Vytvoření nového projektu
+                                    </h4>
+                                    <ol class="space-y-3 text-gray-700">
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                            <p>Klikněte na tlačítko "+"</p>
+                                        </li>
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                            <p>Zadejte název projektu</p>
+                                        </li>
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                            <p>Potvrďte vytvoření stisknutím Enter nebo kliknutím mimo dialog</p>
+                                        </li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🔄</span>
+                                        Práce s existujícími projekty
+                                    </h4>
+                                    <div class="flex flex-col md:flex-row gap-6 justify-between">
+                                        <div class="flex gap-3">
+                                            <span class="text-green-500">✓</span>
+                                            <div>
+                                                <p class="font-medium">Otevření projektu</p>
+                                                <p class="text-sm text-gray-600">Dvojklik</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3">
+                                            <span class="text-green-500">✓</span>
+                                            <div>
+                                                <p class="font-medium">Přejmenování</p>
+                                                <p class="text-sm text-gray-600">Pravé tlačítko → Přejmenovat</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3">
+                                            <span class="text-green-500">✓</span>
+                                            <div>
+                                                <p class="font-medium">Smazání</p>
+                                                <p class="text-sm text-gray-600">Pravé tlačítko → Smazat</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                        <div class="flex gap-3">
+                            <span class="text-xl">💡</span>
+                            <div>
+                                <h4 class="font-semibold text-amber-900">TIP</h4>
+                                <p class="text-sm text-amber-700 mt-1">Projekty jsou automaticky ukládány a zálohované. Můžete se k nim kdykoliv vrátit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

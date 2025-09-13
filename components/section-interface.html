@@ -1,0 +1,371 @@
+<!-- Sekce: Uživatelské rozhraní -->
+<section id="interface" class="mb-12 animate-fade-in">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="p-8 border-b border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <span class="text-xl">🖥️</span>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900">Uživatelské rozhraní</h2>
+            </div>
+            <p class="text-gray-600 mt-2">Přehledné a intuitivní ovládání aplikace</p>
+        </div>
+        
+        <div class="p-8">
+            <h3 class="text-2xl font-bold mb-6">Hlavní oblasti aplikace</h3>
+            
+            <!-- Screenshot hlavního rozhraní -->
+            <div class="screenshot-container mb-6">
+                <img data-screenshot="main-interface" 
+                     src="screenshots/main-interface/screenshot.png" 
+                     alt="AISEE hlavní rozhraní"
+                     class="w-full h-auto screenshot-zoom cursor-pointer"
+                     loading="lazy">
+                <p class="text-sm text-gray-600 mt-2 text-center italic">Hlavní rozhraní po přihlášení</p>
+            </div>
+            
+            <p class="text-gray-700 mb-8">
+                Aplikace je intuitivně rozdělena do 4 hlavních oblastí pro maximální efektivitu:
+            </p>
+            
+
+
+            <!-- Grid s popisem jednotlivých oblastí - nyní klikatelné -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Levý panel - klikatelný -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="togglePanel('leftPanel')">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">📁</span>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-lg">Levý panel</h4>
+                                <svg id="leftPanelIcon" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-600">Zdroje, Třídy a změna zobrazení</p>
+                        </div>
+                    </div>
+
+                    <!-- Rozbalovací obsah levého panelu -->
+                    <div id="leftPanelContent" class="hidden mt-4 pt-4 border-t border-blue-200">
+                        <!-- Sekce Zdroje -->
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-md mb-2 flex items-center gap-2">
+                                <span class="text-lg">📹</span> Zdroje
+                            </h5>
+                            <div class="space-y-2 ml-6">
+                                <div class="text-sm text-gray-700">
+                                    <p class="font-medium mb-1">Režimy zobrazení:</p>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                        <li>Náhled videa</li>
+                                        <li>Náhled tracku</li>
+                                        <li>Náhled videa a tracku</li>
+                                        <li>Multi-video (až 4 videa)</li>
+                                    </ul>
+                                </div>
+                                <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm" onclick="event.stopPropagation()">
+                                    <span class="text-lg">+</span> Nahrát video
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sekce Třídy -->
+                        <div>
+                            <h5 class="font-semibold text-md mb-2 flex items-center gap-2">
+                                <span class="text-lg">🏷️</span> Třídy
+                            </h5>
+                            <div class="space-y-2 ml-6">
+                                <div class="flex gap-2">
+                                    <button class="bg-green-600 text-white px-3 py-1.5 rounded text-sm hover:bg-green-700 transition-colors flex items-center gap-1" onclick="event.stopPropagation()">
+                                        <span>+</span> Nová třída
+                                    </button>
+                                    <button class="bg-purple-600 text-white px-3 py-1.5 rounded text-sm hover:bg-purple-700 transition-colors flex items-center gap-1" onclick="event.stopPropagation()">
+                                        <span>📥</span> Import
+                                    </button>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="bg-orange-600 text-white px-3 py-1.5 rounded text-sm hover:bg-orange-700 transition-colors flex items-center gap-1" onclick="event.stopPropagation()">
+                                        <span>🎓</span> Učit
+                                    </button>
+                                    <button class="bg-indigo-600 text-white px-3 py-1.5 rounded text-sm hover:bg-indigo-700 transition-colors flex items-center gap-1" onclick="event.stopPropagation()">
+                                        <span>📊</span> Report učení
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">Report učení je dostupný po dokončení doučování</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hlavní oblast - klikatelná -->
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="togglePanel('mainArea')">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🎬</span>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-lg">Hlavní oblast</h4>
+                                <svg id="mainAreaIcon" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-600">Video & Timeline - Přehrávání videa a navigace v čase</p>
+                        </div>
+                    </div>
+
+                    <!-- Rozbalovací obsah hlavní oblasti -->
+                    <div id="mainAreaContent" class="hidden mt-4 pt-4 border-t border-green-200">
+                        <div class="space-y-3">
+                            <!-- Ovládací prvky videa -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>🎮</span> Ovládací prvky videa
+                                </h6>
+                                <div class="ml-6 space-y-1 text-sm text-gray-700">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">▶️</span>
+                                        <span>Play/Pause - spuštění a pozastavení přehrávání</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">⏮️</span>
+                                        <span>Frame dozadu - posun o jeden snímek zpět</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">⏭️</span>
+                                        <span>Frame dopředu - posun o jeden snímek vpřed</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">🔇</span>
+                                        <span>Mute - ztlumení/zapnutí zvuku</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">⚡</span>
+                                        <span>Rychlost přehrávání - slider 0.5x až 10x násobek</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Časová osa -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>📊</span> Časová osa (Timeline)
+                                </h6>
+                                <div class="ml-6 space-y-1 text-sm text-gray-700">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">🎯</span>
+                                        <span>Vycentrování na ukazatel - zarovná pohled na aktuální pozici</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">🔍</span>
+                                        <span>Přiblížení na sekvenci - zoom na vybranou část</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">↻</span>
+                                        <span>Reset pohledu - vrátí původní zobrazení časové osy</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">🖱️</span>
+                                        <span>Kolečko myši - přiblížení/oddálení časové osy</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-600">✋</span>
+                                        <span>Stisk kolečka - posun v časové ose (pan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spodní panel - klikatelný -->
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="togglePanel('bottomPanel')">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">📊</span>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-lg">Spodní panel</h4>
+                                <svg id="bottomPanelIcon" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-600">Výsledky - Mřížka detekovaných objektů a událostí</p>
+                        </div>
+                    </div>
+
+                    <!-- Rozbalovací obsah spodního panelu -->
+                    <div id="bottomPanelContent" class="hidden mt-4 pt-4 border-t border-yellow-200">
+                        <div class="space-y-3">
+                            <!-- Zobrazení náhledů -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>🖼️</span> Náhledy detekovaných tracků
+                                </h6>
+                                <div class="ml-6 space-y-1 text-sm text-gray-700">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">▸</span>
+                                        <span>Mřížka s náhledy detekovaných objektů</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">▸</span>
+                                        <span>Velikosti náhledů: S (malé), M (střední), L (velké)</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">▸</span>
+                                        <span>Rychlá navigace kliknutím na náhled</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Řazení a filtrování -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>🔧</span> Ovládací prvky
+                                </h6>
+                                <div class="ml-6 space-y-1 text-sm text-gray-700">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">📊</span>
+                                        <span>Seřadit podle: Čas nebo Confidence</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">🎚️</span>
+                                        <span>Confidence level: slider 1-10 pro filtrování výsledků</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-yellow-600">⚙️</span>
+                                        <span>Tracky nastavené v pravém panelu</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pravý panel - klikatelný -->
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="togglePanel('rightPanel')">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🛠️</span>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-lg">Pravý panel</h4>
+                                <svg id="rightPanelIcon" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-600">Nástroje & Report - Filtry a dokumentace nálezů</p>
+                        </div>
+                    </div>
+
+                    <!-- Rozbalovací obsah pravého panelu -->
+                    <div id="rightPanelContent" class="hidden mt-4 pt-4 border-t border-purple-200">
+                        <div class="space-y-3">
+                            <!-- Defaultní nástroje -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>🎯</span> Základní filtry
+                                </h6>
+                                <div class="ml-6 space-y-1 text-sm text-gray-700">
+                                    <div class="flex items-start gap-2">
+                                        <span class="text-purple-600">▢</span>
+                                        <div>
+                                            <strong>ROI</strong>
+                                            <p class="text-xs text-gray-600">Oblast zájmu ve videu</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <span class="text-purple-600">⏱️</span>
+                                        <div>
+                                            <strong>Časový interval</strong>
+                                            <p class="text-xs text-gray-600">Filtr podle času</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <span class="text-purple-600">🚗</span>
+                                        <div>
+                                            <strong>Auto</strong>
+                                            <p class="text-xs text-gray-600">YOLO detekce</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <span class="text-purple-600">👤</span>
+                                        <div>
+                                            <strong>Osoba</strong>
+                                            <p class="text-xs text-gray-600">YOLO detekce</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Možnosti filtrování -->
+                            <div>
+                                <h6 class="font-semibold text-sm mb-1 flex items-center gap-1">
+                                    <span class="text-xs">➕</span> Možnosti filtrování
+                                </h6>
+                                <div class="ml-4 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
+                                    <div class="flex items-center gap-1">
+                                        <span>🔍</span> Třída
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>📝</span> Zadání textem
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>🖼️</span> Zadání obrázkem
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>🎓</span> Učené třídy
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>∪</span> Sjednocení
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>∩</span> Průnik
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>🔗</span> Sekvence
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>🔎</span> Najít podobné
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>⏱️</span> Časový interval
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span>▢</span> ROI
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Report a Vymazat -->
+                            <div class="flex gap-4 mt-2">
+                                <div class="flex-1">
+                                    <h6 class="font-semibold text-xs mb-1">📋 Report</h6>
+                                    <p class="text-xs text-gray-600 ml-4">Export nálezů</p>
+                                </div>
+                                <div class="flex-1">
+                                    <h6 class="font-semibold text-xs mb-1">🔄 Vymazat</h6>
+                                    <p class="text-xs text-gray-600 ml-4">Reset filtrů</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Režimy zobrazení -->
+            <h3 class="text-xl font-bold mb-4">Režimy zobrazení</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <p class="text-sm font-medium text-blue-900">Náhled videa</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <p class="text-sm font-medium text-blue-900">Náhled tracku</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <p class="text-sm font-medium text-blue-900">Náhled videa a tracku</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <p class="text-sm font-medium text-blue-900">Multi-video (až 4)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
