@@ -13,9 +13,18 @@
                 <div class="p-8">
                     <!-- Advanced tabs -->
                     <div class="mb-8">
-                        <div class="flex border-b border-gray-200">
-                            <button onclick="showAdvancedTab('training', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-indigo-600 border-b-2 border-indigo-600">
-                                Doučování
+                        <div class="flex gap-2 border-b border-gray-200 bg-gray-50 p-1 rounded-t-lg">
+                            <button onclick="showAdvancedTab('training', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md transition-all duration-200 shadow-sm">
+                                🎓 Doučování
+                            </button>
+                            <button onclick="showAdvancedTab('text-search', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
+                                🔍 Hledání textem
+                            </button>
+                            <button onclick="showAdvancedTab('image-search', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
+                                🖼️ Hledání obrázkem
+                            </button>
+                            <button onclick="showAdvancedTab('similar-results', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
+                                🔗 Najít podobné
                             </button>
                         </div>
                         
@@ -48,21 +57,204 @@
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
-                                    <p class="text-sm">Klikněte na "Nová třída"</p>
-                                </li>
-                                <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
                                     <p class="text-sm">Pojmenujte třídu (např. "Invalidní vozík")</p>
                                 </li>
                                 <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                    <p class="text-sm">Stáhněte minimálně 10 obrázků z Google Images a nahrajte je</p>
+                                </li>
+                                <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
-                                    <p class="text-sm">Stáhněte minimálně 10 obrázků z Google Images, nahrajte je a označte v nich objekty dané třídy</p>
+                                    <p class="text-sm">Klikněte na tlačítko "BBox" a nakreslete obdélníky kolem objektů dané třídy na každém obrázku</p>
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">5</span>
-                                    <p class="text-sm">Spusťte trénování tlačítkem "Naučit"</p>
+                                    <p class="text-sm">Zkontrolujte, že všechny obrázky mají zelený rámeček (označení dokončeno) - žádný nesmí mít oranžový rámeček</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">6</span>
+                                    <p class="text-sm">Uložte označené obrázky tlačítkem "Save"</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">7</span>
+                                    <p class="text-sm">Spusťte trénování tlačítkem "Učit"</p>
                                 </li>
                             </ol>
+                            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex gap-2">
+                                    <span class="text-blue-600">💡</span>
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Tip:</strong> Po dokončení trénování najdete naučenou třídu v pravém panelu: klikněte na tlačítko <strong>+</strong>, vyberte <strong>"Učené třídy"</strong> a poté vyberte vaši naučenou třídu ze seznamu.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <img data-screenshot="detect-learned-class" alt="Detekce naučené třídy" class="w-full rounded-lg shadow-lg screenshot-zoom cursor-pointer" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Text Search tab -->
+                        <div id="text-search" class="adv-tab-content mt-6 hidden">
+                            <h3 class="font-semibold text-gray-900 mb-4">Hledání objektů textovým popisem</h3>
+
+                            <!-- Screenshot text search -->
+                            <div class="screenshot-container mb-6">
+                                <img data-screenshot="detect-text-search"
+                                     alt="Hledání objektů textem"
+                                     class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                     loading="lazy">
+                                <p class="text-sm text-gray-500 mt-2 text-center italic">Hledání objektů pomocí textového popisu</p>
+                            </div>
+
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <span class="text-xl">🔍</span>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-900">Inteligentní textové vyhledávání</h4>
+                                        <p class="text-sm text-indigo-700 mt-1">Najděte objekty ve videu pomocí jejich textového popisu.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ol class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                    <p class="text-sm">V pravém panelu klikněte na tlačítko <strong>+</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                    <p class="text-sm">Vyberte možnost <strong>"Zadání textem"</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                    <p class="text-sm">Napište popis objektu, který chcete hledat - ideálně v angličtině, ale může být i česky</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                    <p class="text-sm">Čím podrobnější popis, tím lepší výsledky</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">5</span>
+                                    <p class="text-sm">Klikněte na tlačítko <strong>"Hotovo"</strong></p>
+                                </li>
+                            </ol>
+
+                            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex gap-2">
+                                    <span class="text-blue-600">💡</span>
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Tip:</strong> Je dobré si výsledky seřadit podle confidence (spolehlivosti) pro lepší přehlednost.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Search tab -->
+                        <div id="image-search" class="adv-tab-content mt-6 hidden">
+                            <h3 class="font-semibold text-gray-900 mb-4">Hledání objektů pomocí obrázku</h3>
+
+                            <!-- Screenshot image search -->
+                            <div class="screenshot-container mb-6">
+                                <img data-screenshot="detect-image-search"
+                                     alt="Hledání objektů obrázkem"
+                                     class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                     loading="lazy">
+                                <p class="text-sm text-gray-500 mt-2 text-center italic">Hledání podobných objektů pomocí nahraného obrázku</p>
+                            </div>
+
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <span class="text-xl">🖼️</span>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-900">Vizuální vyhledávání</h4>
+                                        <p class="text-sm text-indigo-700 mt-1">Najděte podobné objekty ve videu pomocí referenčního obrázku.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ol class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                    <p class="text-sm">V pravém panelu klikněte na tlačítko <strong>+</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                    <p class="text-sm">Vyberte možnost <strong>"Zadání obrázkem"</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                    <p class="text-sm">Klikněte na tlačítko <strong>"Choose file"</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                    <p class="text-sm">Vyberte z počítače obrázek, ke kterému chcete hledat podobné výsledky</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">5</span>
+                                    <p class="text-sm">Klikněte na tlačítko <strong>"Hotovo"</strong></p>
+                                </li>
+                            </ol>
+
+                            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex gap-2">
+                                    <span class="text-blue-600">💡</span>
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Tip:</strong> Seřaďte si výsledky podle confidence (spolehlivosti) pro přehlednější zobrazení nejrelevantnějších výsledků.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Similar Results tab -->
+                        <div id="similar-results" class="adv-tab-content mt-6 hidden">
+                            <h3 class="font-semibold text-gray-900 mb-4">Najít podobné výsledky</h3>
+
+                            <!-- Screenshot find similar results -->
+                            <div class="screenshot-container mb-6">
+                                <img data-screenshot="find-similar-results"
+                                     alt="Hledání podobných výsledků"
+                                     class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                     loading="lazy">
+                                <p class="text-sm text-gray-500 mt-2 text-center italic">Hledání podobných výsledků k vybranému objektu</p>
+                            </div>
+
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <span class="text-xl">🔗</span>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-900">Hledání podobností</h4>
+                                        <p class="text-sm text-indigo-700 mt-1">Najděte objekty podobné vybranému náhledu z výsledků detekce.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ol class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                    <p class="text-sm">V náhledech nalezených objektů (spodní panel) klikněte <strong>pravým tlačítkem</strong> na náhled, ke kterému chcete najít podobné výsledky</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                    <p class="text-sm">Z kontextového menu vyberte <strong>"Najít podobné výsledky"</strong></p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                    <p class="text-sm">Tato možnost se zobrazí v pravém panelu</p>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                    <p class="text-sm">Klikněte na ni pro zobrazení podobných výsledků</p>
+                                </li>
+                            </ol>
+
+                            <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex gap-2">
+                                    <span class="text-blue-600">💡</span>
+                                    <p class="text-sm text-blue-800">
+                                        <strong>Tip:</strong> Doporučujeme seřadit výsledky podle confidence (spolehlivosti) pro lepší přehled o míře podobnosti nalezených objektů.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

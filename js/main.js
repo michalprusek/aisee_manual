@@ -91,8 +91,8 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth scroll to section
-function scrollToSection(sectionId) {
+// Smooth scroll to section with optional tab switching
+function scrollToSection(sectionId, tabId = null) {
     const element = document.getElementById(sectionId);
     if (element) {
         const offset = 80; // Adjusted for just the header height
@@ -100,11 +100,39 @@ function scrollToSection(sectionId) {
         const elementRect = element.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
         const offsetPosition = elementPosition - offset;
-        
+
         window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
         });
+
+        // If a tab ID is provided, switch to that tab after scrolling
+        if (tabId) {
+            setTimeout(() => {
+                // For Start section tabs
+                if (sectionId === 'start') {
+                    // Find the correct tab button
+                    const buttons = document.querySelectorAll('.tab-btn');
+                    buttons.forEach(btn => {
+                        const onclick = btn.getAttribute('onclick');
+                        if (onclick && onclick.includes(`'${tabId}'`)) {
+                            showTab(tabId, btn);
+                        }
+                    });
+                }
+                // For Advanced section tabs
+                else if (sectionId === 'advanced') {
+                    // Find the correct tab button
+                    const buttons = document.querySelectorAll('.adv-tab-btn');
+                    buttons.forEach(btn => {
+                        const onclick = btn.getAttribute('onclick');
+                        if (onclick && onclick.includes(`'${tabId}'`)) {
+                            showAdvancedTab(tabId, btn);
+                        }
+                    });
+                }
+            }, 300); // Small delay to ensure scroll completes first
+        }
     }
 }
 
@@ -116,14 +144,14 @@ function showTab(tabName, button) {
     });
     // Show selected tab
     document.getElementById(tabName).classList.remove('hidden');
-    
-    // Update button styles
+
+    // Update button styles - new pill style
     document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
-        btn.classList.add('text-gray-600');
+        btn.classList.remove('text-white', 'bg-blue-600', 'shadow-sm');
+        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
     });
-    button.classList.remove('text-gray-600');
-    button.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
+    button.classList.add('text-white', 'bg-blue-600', 'shadow-sm');
 }
 
 // Advanced tab functionality
@@ -134,14 +162,14 @@ function showAdvancedTab(tabName, button) {
     });
     // Show selected tab
     document.getElementById(tabName).classList.remove('hidden');
-    
-    // Update button styles
+
+    // Update button styles - new pill style
     document.querySelectorAll('.adv-tab-btn').forEach(btn => {
-        btn.classList.remove('text-indigo-600', 'border-b-2', 'border-indigo-600');
-        btn.classList.add('text-gray-600');
+        btn.classList.remove('text-white', 'bg-indigo-600', 'shadow-sm');
+        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
     });
-    button.classList.remove('text-gray-600');
-    button.classList.add('text-indigo-600', 'border-b-2', 'border-indigo-600');
+    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
+    button.classList.add('text-white', 'bg-indigo-600', 'shadow-sm');
 }
 
 // Add animation on scroll
