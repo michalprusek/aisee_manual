@@ -87,8 +87,13 @@
                                         <div>
                                             <h6 class="font-semibold text-sm">Seznam souborů:</h6>
                                             <ul class="text-xs text-gray-600 ml-4 space-y-1">
-                                                <li>• <strong>Frame step</strong> - nastavení pro každý soubor (zde hodnota 2)</li>
-                                                <li>• <strong>FPS</strong> - vypočtená hodnota (zde 15.00 při frame step 2)</li>
+                                                <li>• <strong>Frame step</strong> - zpracovává se každý n-tý snímek, kde n je hodnota frame step
+                                                    <div class="ml-4 mt-1 text-gray-500">
+                                                        Příklad: Frame step = 2 znamená zpracování každého druhého snímku (1., 3., 5., ...)
+                                                        <br>Frame step = 5 znamená zpracování každého pátého snímku (1., 6., 11., ...)
+                                                    </div>
+                                                </li>
+                                                <li>• <strong>FPS</strong> - efektivní snímková frekvence (původní FPS / frame step)</li>
                                                 <li>• <strong>X</strong> - tlačítko pro odebrání souboru</li>
                                             </ul>
                                         </div>
@@ -147,7 +152,7 @@
                                             <p class="text-sm font-medium text-gray-700">📤 Nahrávání a předzpracování</p>
                                             <p class="text-xs text-gray-600">• Upload souboru na server</p>
                                             <p class="text-xs text-gray-600">• Konverze videa do jednotného formátu</p>
-                                            <p class="text-xs text-gray-600">• Extrakce snímků podle Frame Step nastavení</p>
+                                            <p class="text-xs text-gray-600">• Extrakce snímků podle Frame Step (zpracuje se každý n-tý snímek)</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start gap-3">
@@ -172,8 +177,10 @@
 
                                 <div class="mt-4 p-3 bg-blue-50 rounded-lg">
                                     <p class="text-xs text-blue-800">
-                                        <strong>💡 Tip:</strong> Zpracování můžete urychlit nastavením vyššího Frame Step (např. 5 místo 1),
-                                        ale pozor - můžete přijít o detekci krátkých událostí.
+                                        <strong>💡 Tip:</strong> Zpracování můžete urychlit nastavením vyššího Frame Step (např. 5 místo 1).
+                                        <br><strong>Frame Step</strong> určuje, že se zpracovává každý n-tý snímek videa.
+                                        <br>• Frame Step = 1: zpracují se všechny snímky (nejpřesnější, ale nejpomalejší)
+                                        <br>• Frame Step = 5: zpracuje se každý 5. snímek (5x rychlejší, ale můžete přijít o detekci krátkých událostí)
                                     </p>
                                 </div>
                             </div>
