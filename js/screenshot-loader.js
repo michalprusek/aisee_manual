@@ -1,93 +1,42 @@
 // Screenshot loader that works with any filename
 // Maps folder names to actual filenames dynamically
 
-const screenshotMap = {
-    'login': null,
-    'main-interface': null,
-    'panels': null,
-    'video-player': null,
-    'video-upload': null,
-    'search': null,
-    'reports': null,
-    'advanced': null,
-    'processing-states': null,
-    'project-actions': null,
-    'project-page': null
+// Pre-defined knowledge of what files exist to avoid 404s
+const knownScreenshots = {
+    'login': 'screenshot.mov',
+    'main-interface': 'screenshot.png',
+    // 'panels': removed - empty file
+    'video-player': 'screenshot.mov',
+    'video-upload': 'screenshot.mov',
+    'video-upload-dialog': 'screenshot.png',
+    'search': 'screenshot.mov',
+    'reports': 'screenshot.png',
+    'advanced': 'screenshot.mov',
+    // 'processing-states': removed - empty file
+    'project-actions': 'screenshot.mov',
+    'project-page': 'screenshot.mov',
+    'detect-image-search': 'screenshot.mov',
+    'detect-learned-class': 'screenshot.mov',
+    'detect-text-search': 'screenshot.mov',
+    'find-similar-results': 'screenshot.mov'
 };
+
+const screenshotMap = {};
 
 // Try to load images with various possible names
 async function findScreenshot(folder) {
     const basePath = `screenshots/${folder}/`;
-    
-    // List of possible filenames to try (in priority order)
-    const possibleFilenames = [
-        // Video files have highest priority (for animations)
-        'screenshot.mov',
-        'screenshot.mp4',
-        'screenshot.webm',
-        'video.mov',
-        'video.mp4',
-        'animation.mov',
-        'animation.mp4',
-        'demo.mov',
-        'demo.mp4',
-        // GIF files
-        'screenshot.gif',
-        'animation.gif',
-        'demo.gif',
-        'screen.gif',
-        // Static images
-        'screenshot.png',
-        'screenshot.jpg',
-        'Screenshot.png',
-        'Screenshot.jpg',
-        'screen.png',
-        'screen.jpg',
-        'image.png',
-        'image.jpg',
-        // Common macOS screenshot/recording naming pattern
-        /Screen Recording.*\.(mov|mp4)/,
-        /Screenshot.*\.(png|gif)/,
-        /Screen.*\.(png|gif|mov|mp4)/,
-        // Any media file
-        /.*\.(png|jpg|jpeg|gif|mov|mp4|webm|PNG|JPG|JPEG|GIF|MOV|MP4|WEBM)$/
-    ];
-    
-    // For pattern matching, we need to make a request to check files
-    // Since we can't list directories client-side, we'll try common patterns
-    for (const pattern of possibleFilenames) {
-        if (pattern instanceof RegExp) {
-            // Try common macOS screenshot patterns
-            const datePatterns = [
-                'Screenshot 2025',
-                'Screen Shot',
-                'screenshot',
-                'image'
-            ];
-            
-            for (const prefix of datePatterns) {
-                for (const ext of ['.gif', '.png', '.jpg', '.GIF', '.PNG', '.JPG']) {
-                    // Try with various date formats
-                    const testPaths = [
-                        `${basePath}${prefix}${ext}`,
-                        `${basePath}${prefix} at${ext}`,
-                    ];
-                    
-                    for (const path of testPaths) {
-                        if (await checkImage(path)) {
-                            return path;
-                        }
-                    }
-                }
-            }
-        } else {
-            const path = `${basePath}${pattern}`;
-            if (await checkImage(path)) {
-                return path;
-            }
-        }
+
+    // First check if we know exactly what file exists
+    if (knownScreenshots[folder]) {
+        const path = `${basePath}${knownScreenshots[folder]}`;
+        // Return the known path directly without checking
+        // This prevents 404 errors for known files
+        return path;
     }
-    
+
+    // If not in known list, return null (don't try fallbacks)
+    // All existing screenshots are already mapped
     return null;
 }
 
@@ -99,14 +48,21 @@ function checkImage(path) {
         const isVideo = videoExtensions.some(ext => path.toLowerCase().includes(ext));
 
         if (isVideo) {
-            // For videos, try to load with fetch
+            // For videos, try to load with fetch (silently)
             fetch(path, { method: 'HEAD' })
-                .then(response => resolve(response.ok))
+                .then(response => {
+                    // Also check content-length to avoid empty files
+                    const contentLength = response.headers.get('content-length');
+                    resolve(response.ok && contentLength && parseInt(contentLength) > 0);
+                })
                 .catch(() => resolve(false));
         } else {
             // For images, use Image object
             const img = new Image();
-            img.onload = () => resolve(true);
+            img.onload = () => {
+                // Check if image has actual dimensions (not empty)
+                resolve(img.width > 0 && img.height > 0);
+            };
             img.onerror = () => resolve(false);
             img.src = path;
         }
@@ -170,17 +126,24 @@ async function initializeAllScreenshots() {
                 //     container.style.position = 'relative';
                 // }
 
-                // Replace img with video
-                img.parentNode.replaceChild(video, img);
+                // Replace img with video (check if parent exists first)
+                if (img.parentNode) {
+                    img.parentNode.replaceChild(video, img);
+                }
 
-                // Ensure video plays
+                // Ensure video plays (silently handle autoplay failures)
                 video.addEventListener('loadeddata', function() {
                     this.play().catch(e => {
-                        console.log('Auto-play was prevented, trying again...', e);
-                        // Try to play on user interaction
-                        document.addEventListener('click', () => {
-                            this.play();
-                        }, { once: true });
+                        // Silently handle autoplay prevention - it's expected behavior
+                        // Videos will play on first user interaction
+                        const playOnInteraction = () => {
+                            this.play().catch(() => {}); // Silently fail if still not allowed
+                        };
+
+                        // Try to play on any user interaction
+                        ['click', 'touchstart', 'keydown'].forEach(event => {
+                            document.addEventListener(event, playOnInteraction, { once: true });
+                        });
                     });
                 });
 
