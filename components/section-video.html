@@ -47,11 +47,69 @@
                                 <!-- Screenshot dialogu pro nahrání videa -->
                                 <div class="screenshot-container mt-6">
                                     <img data-screenshot="video-upload"
-                                         src="screenshots/video-upload/screenshot.png"
+                                         src="screenshots/video-upload/upload-dialog.png"
                                          alt="Dialog pro nahrání videa"
                                          class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
                                          loading="lazy">
-                                    <p class="text-sm text-gray-500 mt-2 text-center italic">Nastavení parametrů při nahrávání videa</p>
+                                    <p class="text-sm text-gray-500 mt-2 text-center italic">Dialog nastavení sekvence při nahrávání videa</p>
+                                </div>
+
+                                <div class="bg-gray-50 rounded-lg p-4 mt-4">
+                                    <h5 class="font-semibold mb-3">📋 Popis dialogu:</h5>
+
+                                    <!-- Screenshot dialogu vložený do popisu -->
+                                    <div class="screenshot-container mb-4">
+                                        <img data-screenshot="video-upload-dialog"
+                                             src="screenshots/video-upload-dialog/screenshot.png"
+                                             alt="Dialog nastavení sekvence"
+                                             class="w-full rounded-lg shadow-md border border-gray-300"
+                                             loading="lazy">
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <div>
+                                            <h6 class="font-semibold text-sm">Nastavení sekvence:</h6>
+                                            <ul class="text-xs text-gray-600 ml-4 space-y-1">
+                                                <li>• <strong>Název sekvence</strong> - identifikátor kamery (výchozí "kamera 1")</li>
+                                                <li>• <strong>Offset začátku sekvence</strong> - časový posun v sekundách</li>
+                                                <li>• <strong>Statická kamera</strong> - zaškrtnout pro pevně umístěné kamery</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-semibold text-sm">Zpracování (pravá strana):</h6>
+                                            <ul class="text-xs text-gray-600 ml-4 space-y-1">
+                                                <li>• <strong>YOLO</strong> - automatická detekce objektů (výchozí zapnuto)</li>
+                                                <li>• <strong>SigLIP 2</strong> - pokročilá klasifikace objektů (výchozí zapnuto)</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-semibold text-sm">Seznam souborů:</h6>
+                                            <ul class="text-xs text-gray-600 ml-4 space-y-1">
+                                                <li>• <strong>Frame step</strong> - nastavení pro každý soubor (zde hodnota 2)</li>
+                                                <li>• <strong>FPS</strong> - vypočtená hodnota (zde 15.00 při frame step 2)</li>
+                                                <li>• <strong>X</strong> - tlačítko pro odebrání souboru</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-semibold text-sm">Ovládací prvky:</h6>
+                                            <ul class="text-xs text-gray-600 ml-4 space-y-1">
+                                                <li>• <strong>Použít na vše</strong> - aplikuje nastavení frame step na všechny soubory</li>
+                                                <li>• <strong>Sloučit</strong> - spojí segmentovaná videa do jedné sekvence</li>
+                                                <li>• <strong>Seřadit podle názvu</strong> - automatické seřazení souborů</li>
+                                                <li>• <strong>Reset</strong> - vymaže všechna nastavení</li>
+                                                <li>• <strong>Choose files</strong> - přidání dalších souborů</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="bg-green-50 border border-green-200 rounded p-2 mt-2">
+                                            <p class="text-xs text-green-800">
+                                                <strong>Stav:</strong> "Nahrávání dokončeno!" - videa jsou připravena ke zpracování
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -66,35 +124,57 @@
                         </div>
                         <div>
                             <div class="p-6 bg-white">
-                                <p class="text-sm text-gray-600 mb-4">Každé video prochází 3 fázemi zpracování. Při nahrání více videí se celkový počet fází násobí:</p>
-                                <div class="bg-gray-50 rounded-lg p-4 mb-4">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-sm font-medium text-gray-700">Příklad pro 3 videa:</span>
-                                        <span class="text-sm font-mono bg-white px-2 py-1 rounded border border-gray-200">7/9</span>
+                                <p class="text-sm text-gray-600 mb-4"><strong>Každé video prochází postupně 3 fázemi zpracování:</strong></p>
+
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                                    <p class="text-sm text-gray-700 mb-2">
+                                        <strong>⚠️ Důležité:</strong> Každé nahrané video musí projít všemi 3 fázemi samostatně.
+                                    </p>
+                                    <div class="text-xs text-gray-600 space-y-1">
+                                        <p>• <strong>1 video</strong> = 3 fáze zpracování (1/3, 2/3, 3/3)</p>
+                                        <p>• <strong>2 videa</strong> = 6 fází zpracování (první video 1-3/6, druhé video 4-6/6)</p>
+                                        <p>• <strong>3 videa</strong> = 9 fází zpracování (každé video má své 3 fáze, celkem 9)</p>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2 italic">
+                                        Příklad: Při nahrání 3 videí uvidíte postupně stavy 1/9, 2/9, 3/9... až 9/9
+                                    </p>
                                 </div>
+
                                 <div class="space-y-3">
                                     <div class="flex items-start gap-3">
-                                        <span class="text-xs font-mono bg-blue-100 text-blue-700 px-2 py-1 rounded">1/3</span>
+                                        <span class="text-xs font-mono bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-300">1/3</span>
                                         <div>
-                                            <p class="text-sm font-medium text-gray-700">Příprava videa</p>
-                                            <p class="text-xs text-gray-500">Konverze a optimalizace videa pro zpracování</p>
+                                            <p class="text-sm font-medium text-gray-700">📤 Nahrávání a předzpracování</p>
+                                            <p class="text-xs text-gray-600">• Upload souboru na server</p>
+                                            <p class="text-xs text-gray-600">• Konverze videa do jednotného formátu</p>
+                                            <p class="text-xs text-gray-600">• Extrakce snímků podle Frame Step nastavení</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start gap-3">
-                                        <span class="text-xs font-mono bg-blue-100 text-blue-700 px-2 py-1 rounded">2/3</span>
+                                        <span class="text-xs font-mono bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-300">2/3</span>
                                         <div>
-                                            <p class="text-sm font-medium text-gray-700">Hledání objektů</p>
-                                            <p class="text-xs text-gray-500">Detekce a sledování objektů ve videu</p>
+                                            <p class="text-sm font-medium text-gray-700">🔍 YOLO detekce a tracking</p>
+                                            <p class="text-xs text-gray-600">• Detekce objektů pomocí YOLO (auta, osoby, kamiony, atd.)</p>
+                                            <p class="text-xs text-gray-600">• Vytvoření tracků - sledování objektů mezi snímky</p>
+                                            <p class="text-xs text-gray-600">• Uložení bounding boxů a trajektorií</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start gap-3">
-                                        <span class="text-xs font-mono bg-green-100 text-green-700 px-2 py-1 rounded">3/3</span>
+                                        <span class="text-xs font-mono bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-300">3/3</span>
                                         <div>
-                                            <p class="text-sm font-medium text-gray-700">Klasifikace objektů</p>
-                                            <p class="text-xs text-gray-500">Rozpoznání typů objektů a jejich kategorizace</p>
+                                            <p class="text-sm font-medium text-gray-700">🎯 SigLIP 2 analýza</p>
+                                            <p class="text-xs text-gray-600">• Pokročilá klasifikace objektů pro textové vyhledávání</p>
+                                            <p class="text-xs text-gray-600">• Vytvoření embedding vektorů pro každý track</p>
+                                            <p class="text-xs text-gray-600">• Indexace pro rychlé vyhledávání podobných objektů</p>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                    <p class="text-xs text-blue-800">
+                                        <strong>💡 Tip:</strong> Zpracování můžete urychlit nastavením vyššího Frame Step (např. 5 místo 1),
+                                        ale pozor - můžete přijít o detekci krátkých událostí.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -119,13 +199,123 @@
                                 </div>
 
 
-                                <h4 class="font-semibold text-gray-900 mb-3">Ovládání myší</h4>
-                                <ul class="space-y-2 text-sm text-gray-600">
-                                    <li>• <strong>Klik levým tlačítkem:</strong> Přemístí posuvník videa na místo kurzoru</li>
-                                    <li>• <strong>Kolečko na timeline:</strong> Zoom časové osy</li>
-                                    <li>• <strong>Tažení timeline:</strong> Rychlá navigace</li>
-                                    <li>• <strong>Pravé tlačítko:</strong> Kontextové menu</li>
-                                </ul>
+                                <h4 class="font-semibold text-gray-900 mb-3">📊 Časová osa (Timeline)</h4>
+
+                                <!-- Důležitá poznámka -->
+                                <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                    <p class="text-sm text-gray-700">
+                                        <strong>⚠️ Poznámka:</strong> Časová osa zobrazuje pouze sekvence, které jsou <strong>zaškrtnuté</strong> v levém panelu (Zdroje).
+                                        Pro zobrazení/skrytí sekvence v časové ose použijte checkbox u názvu sekvence.
+                                    </p>
+                                </div>
+
+                                <!-- Ovládání myší -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">🖱️ Ovládání myší:</h5>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">◀</span>
+                                            <div>
+                                                <strong>Levé tlačítko</strong> - kliknutí nastaví časovou pozici
+                                                <p class="text-xs text-gray-500">• Tažení levým tlačítkem posouvá časový ukazatel</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">⬛</span>
+                                            <div>
+                                                <strong>Prostřední tlačítko</strong> - posun časové osy (pan)
+                                                <p class="text-xs text-gray-500">• Držení a tažení posouvá celou časovou osu</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">▶</span>
+                                            <div>
+                                                <strong>Pravé tlačítko</strong> - kontextové menu
+                                                <p class="text-xs text-gray-500">• Zobrazí možnosti pro aktuální pozici</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">⚙️</span>
+                                            <div>
+                                                <strong>Kolečko myši</strong> - zoom in/out
+                                                <p class="text-xs text-gray-500">• Přibližuje/oddaluje časovou osu pod kurzorem</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ovládací tlačítka -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">🎮 Ovládací tlačítka časové osy (vpravo nahoře):</h5>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">⦿</span>
+                                            <div>
+                                                <strong>Vycentrovat na ukazatel</strong> (Center Timeline - ikona: ⦿)
+                                                <p class="text-xs text-gray-500">• Posune časovou osu tak, aby byl aktuální čas přehrávání uprostřed</p>
+                                                <p class="text-xs text-gray-500">• Funkce: <code>centerPointer()</code> - přepočítá offset na střed obrazovky</p>
+                                                <p class="text-xs text-gray-500">• Užitečné při posunu mimo viditelnou oblast</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">⌅</span>
+                                            <div>
+                                                <strong>Přiblížit na sekvenci</strong> (Zoom to Sequence - ikona: ⌅)
+                                                <p class="text-xs text-gray-500">• Automaticky nastaví zoom tak, aby vybraná sekvence vyplnila celou šířku</p>
+                                                <p class="text-xs text-gray-500">• Funkce: <code>zoomToSeq()</code> - vypočítá min/max čas vybrané sekvence</p>
+                                                <p class="text-xs text-gray-500">• Přizpůsobí měřítko na 900px / délka sekvence</p>
+                                                <p class="text-xs text-gray-500">• Automaticky nastaví čas na začátek sekvence</p>
+                                                <p class="text-xs text-gray-500">• Ideální pro detailní analýzu jedné sekvence</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">⟲</span>
+                                            <div>
+                                                <strong>Resetovat zobrazení</strong> (Reset View - ikona: ⟲)
+                                                <p class="text-xs text-gray-500">• Funkce: <code>resetView()</code> - vrátí časovou osu do výchozího stavu</p>
+                                                <p class="text-xs text-gray-500">• Zobrazí všechny zaškrtnuté sekvence najednou</p>
+                                                <p class="text-xs text-gray-500">• Automaticky vypočítá optimální zoom pro zobrazení všech dat</p>
+                                                <p class="text-xs text-gray-500">• Zachová aktuální časovou pozici (nepřeskočí na začátek)</p>
+                                                <p class="text-xs text-gray-500">• Nastaví offset na minimum ze všech sekvencí</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kontextové menu -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">📋 Kontextové menu (pravé tlačítko):</h5>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">➕</span>
+                                            <div>
+                                                <strong>Přidat do reportu</strong>
+                                                <p class="text-xs text-gray-500">• Přidá aktuální snímek do reportu</p>
+                                                <p class="text-xs text-gray-500">• Zachytí čas, sekvenci a případný vybraný track</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">↔️</span>
+                                            <div>
+                                                <strong>Posunout sekvenci</strong> (zobrazuje se při kliknutí na sekvenci)
+                                                <p class="text-xs text-gray-500">• Umožňuje změnit časový offset sekvence</p>
+                                                <p class="text-xs text-gray-500">• Tažením myši posunete celou sekvenci v čase</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Vizuální prvky -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">👁️ Vizuální prvky:</h5>
+                                    <ul class="space-y-1 text-sm text-gray-700">
+                                        <li>• <strong>Oranžový ukazatel</strong> - aktuální časová pozice</li>
+                                        <li>• <strong>Časové značky</strong> - automatické zobrazení času podle zoomu</li>
+                                        <li>• <strong>Zelené bloky</strong> - jednotlivé video soubory v sekvencích</li>
+                                        <li>• <strong>Zvýraznění</strong> - vybraná sekvence je vizuálně odlišena</li>
+                                        <li>• <strong>Časové okno</strong> - aktuální čas zobrazený uprostřed nahoře</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

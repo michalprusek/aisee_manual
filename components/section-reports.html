@@ -11,48 +11,164 @@
                 </div>
                 
                 <div class="p-8">
-                    <!-- Screenshot reportů -->
-                    <div class="screenshot-container mb-6">
-                        <img data-screenshot="reports"
-                             src="screenshots/reports/screenshot.png"
-                             alt="Tvorba reportů v AISEE" 
-                             class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
-                             loading="lazy">
-                        <p class="text-sm text-gray-500 mt-2 text-center italic">Rozhraní pro tvorbu a export reportů</p>
+                    <h3 class="text-2xl font-bold mb-6">Práce s reporty</h3>
+
+                    <!-- Panel reportu v aplikaci -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">📋 Panel reportu v aplikaci</h4>
+                        <p class="text-gray-600 mb-4">Report panel se nachází v pravém panelu aplikace (záložka Report) a umožňuje sběr a správu nálezů během analýzy videa.</p>
+
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h5 class="font-semibold mb-3">Funkce panelu:</h5>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-green-600 mt-1">+</span>
+                                    <div>
+                                        <strong>Tlačítko "+" (Přidat)</strong>
+                                        <p class="text-sm text-gray-600">Přidá aktuální snímek videa do reportu včetně času a vybrané sekvence</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-blue-600 mt-1">📤</span>
+                                    <div>
+                                        <strong>Tlačítko "Export"</strong>
+                                        <p class="text-sm text-gray-600">Otevře report v novém okně jako HTML stránku připravenou k tisku nebo uložení</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-red-600 mt-1">🗑️</span>
+                                    <div>
+                                        <strong>Tlačítko "Vymazat"</strong>
+                                        <p class="text-sm text-gray-600">Vymaže všechny položky reportu (používejte opatrně!)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="grid md:grid-cols-3 gap-4 mb-8">
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-2xl">📸</span>
+
+                    <!-- Položky reportu -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">📸 Jednotlivé položky reportu</h4>
+                        <p class="text-gray-600 mb-4">Každá položka v reportu obsahuje následující informace:</p>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h5 class="font-semibold mb-2">Automaticky zachycené údaje:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <strong>Název sekvence</strong> - identifikátor kamery</li>
+                                    <li>• <strong>Globální čas</strong> - přesná časová značka</li>
+                                    <li>• <strong>Video soubor</strong> - název zdrojového videa</li>
+                                    <li>• <strong>Čas ve videu</strong> - lokální čas v rámci videa</li>
+                                    <li>• <strong>Náhled snímku</strong> - automatický screenshot</li>
+                                </ul>
                             </div>
-                            <h4 class="font-semibold text-gray-900 mb-2">Automatické snímky</h4>
-                            <p class="text-sm text-gray-600">Systém vytvoří náhledy všech momentů v reportu</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-2xl">📝</span>
+
+                            <div class="bg-green-50 rounded-lg p-4">
+                                <h5 class="font-semibold mb-2">Uživatelská nastavení:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <strong>Checkbox "Bounding box"</strong> - zobrazí/skryje detekované objekty</li>
+                                    <li>• <strong>Textové pole "Komentář"</strong> - vlastní poznámky</li>
+                                    <li>• <strong>Výběr položky</strong> - kliknutím skočíte na daný čas</li>
+                                    <li>• <strong>Kontextové menu</strong> - pravé tlačítko pro smazání</li>
+                                </ul>
                             </div>
-                            <h4 class="font-semibold text-gray-900 mb-2">Poznámky</h4>
-                            <p class="text-sm text-gray-600">Ke každé položce můžete přidat textový komentář</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-2xl">📤</span>
-                            </div>
-                            <h4 class="font-semibold text-gray-900 mb-2">Export</h4>
-                            <p class="text-sm text-gray-600">Stáhněte report jako PDF nebo ZIP s obrázky</p>
                         </div>
                     </div>
-                    
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <div class="flex gap-3">
-                            <span class="text-xl">✅</span>
-                            <div>
-                                <h4 class="font-semibold text-green-900">Automatické ukládání</h4>
-                                <p class="text-sm text-green-700 mt-1">Všechny reporty se ukládají automaticky a jsou dostupné i po odhlášení.</p>
+
+                    <!-- Způsoby přidání do reportu -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">➕ Jak přidat záznamy do reportu</h4>
+                        <div class="space-y-3">
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <p class="font-semibold mb-2">Existují 3 způsoby přidání:</p>
+                                <ol class="list-decimal list-inside space-y-2 text-sm">
+                                    <li><strong>Tlačítko "+" v Report panelu</strong> - přidá aktuální snímek</li>
+                                    <li><strong>Pravé tlačítko na časové ose</strong> → "Přidat do reportu"</li>
+                                    <li><strong>Kontextové menu ve výsledcích</strong> - přidá konkrétní detekci</li>
+                                </ol>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Screenshot exportovaného reportu -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">📄 Exportovaný report</h4>
+                        <div class="screenshot-container mb-4">
+                            <img data-screenshot="reports"
+                                 src="screenshots/reports/screenshot.png"
+                                 alt="Ukázka exportovaného reportu"
+                                 class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                 loading="lazy">
+                            <p class="text-sm text-gray-500 mt-2 text-center italic">Ukázka exportovaného HTML reportu s tabulkou nálezů</p>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h5 class="font-semibold mb-3">Struktura exportovaného reportu (viz screenshot):</h5>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h6 class="font-semibold text-sm mb-2">📊 Hlavička reportu:</h6>
+                                    <ul class="text-sm space-y-1 text-gray-600">
+                                        <li>• <strong>Autor:</strong> textové pole pro jméno</li>
+                                        <li>• <strong>Datum vytvoření:</strong> automaticky generované (např. 9/25/2025, 12:02:15 AM)</li>
+                                        <li>• <strong>Poznámky:</strong> textové pole pro obecné poznámky</li>
+                                        <li>• Tlačítko <strong>"Vytisknout PDF"</strong> v pravém horním rohu</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="font-semibold text-sm mb-2">📋 Tabulka s nálezy:</h6>
+                                    <ul class="text-sm space-y-1 text-gray-600">
+                                        <li>• <strong>Zdroj</strong> - celá cesta k video souboru (např. vlc-record-2024-04-09-11h17m18s-002_DALNICE.MOV-.mp4)</li>
+                                        <li>• <strong>Čas</strong> - přesná časová značka (např. 00:00:07.54)</li>
+                                        <li>• <strong>Obrázek</strong> - náhled snímku z videa</li>
+                                        <li>• <strong>Komentář</strong> - uživatelské poznámky (např. "text 1", "text 2")</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 p-3 bg-blue-50 rounded">
+                                <p class="text-xs text-blue-800">
+                                    <strong>💡 Tip:</strong> Report je plně interaktivní HTML stránka, kterou lze editovat před tiskem.
+                                    Pole "Autor" a "poznámky" lze vyplnit přímo v exportovaném dokumentu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export a tisk -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">🖨️ Export a tisk</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h5 class="font-semibold mb-2">HTML Export:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Otevře se v novém okně prohlížeče</li>
+                                    <li>• Plně interaktivní HTML stránka</li>
+                                    <li>• Obsahuje všechny obrázky inline</li>
+                                    <li>• Lze uložit jako HTML soubor</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <h5 class="font-semibold mb-2">PDF Tisk:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Tlačítko "Vytisknout PDF"</li>
+                                    <li>• Optimalizováno pro formát A4</li>
+                                    <li>• Automatické stránkování</li>
+                                    <li>• Zachovává formátování tabulky</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tipy pro práci -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-6">
+                        <h4 class="font-semibold text-purple-900 mb-3">💡 Tipy pro efektivní práci s reporty</h4>
+                        <ul class="text-sm space-y-2 text-purple-800">
+                            <li>✓ <strong>Průběžné dokumentování</strong> - přidávejte nálezy hned při analýze</li>
+                            <li>✓ <strong>Využití komentářů</strong> - popisujte kontext a důležité detaily</li>
+                            <li>✓ <strong>Bounding boxy</strong> - zapněte pro zvýraznění detekovaných objektů</li>
+                            <li>✓ <strong>Navigace</strong> - kliknutím na položku v reportu skočíte na daný čas</li>
+                            <li>✓ <strong>Export</strong> - report se generuje s aktuálním tokenem pro přístup k obrázkům</li>
+                        </ul>
                     </div>
                 </div>
             </div>
