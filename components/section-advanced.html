@@ -26,6 +26,9 @@
                             <button onclick="showAdvancedTab('similar-results', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
                                 🔗 Najít podobné
                             </button>
+                            <button onclick="showAdvancedTab('class-management', this)" class="adv-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
+                                🏷️ Správa tříd
+                            </button>
                         </div>
                         
                         <!-- Training tab -->
@@ -253,6 +256,131 @@
                                     <p class="text-sm text-blue-800">
                                         <strong>Tip:</strong> Seřaďte si výsledky podle confidence (spolehlivosti) pro přehlednější zobrazení nejrelevantnějších výsledků.
                                     </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Class Management tab - NOVÝ TAB -->
+                        <div id="class-management" class="adv-tab-content mt-6 hidden">
+                            <h3 class="font-semibold text-gray-900 mb-4">Správa tříd objektů</h3>
+
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <span class="text-xl">🏷️</span>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-900">LabelSettings - Pokročilá správa tříd</h4>
+                                        <p class="text-sm text-indigo-700 mt-1">Spravujte třídy objektů na globální i projektové úrovni. Nastavte vizuální odlišení, skupiny a whitelist pro trénování.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <!-- Globální vs. projektové nastavení -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">⚙️</span>
+                                        Globální vs. projektové nastavení
+                                    </h4>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                                            <h5 class="font-semibold text-blue-900 mb-2">🌐 Globální nastavení</h5>
+                                            <p class="text-sm text-blue-700 mb-2">Platí pro všechny projekty v systému:</p>
+                                            <ul class="text-xs text-blue-600 space-y-1">
+                                                <li>• Výchozí barvy a ikony tříd</li>
+                                                <li>• Systémové skupiny tříd</li>
+                                                <li>• Sdílené klasifikátory</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-green-50 rounded-lg p-4 border border-green-200">
+                                            <h5 class="font-semibold text-green-900 mb-2">📁 Projektové nastavení</h5>
+                                            <p class="text-sm text-green-700 mb-2">Specifické pro aktuální projekt:</p>
+                                            <ul class="text-xs text-green-600 space-y-1">
+                                                <li>• Vlastní naučené třídy</li>
+                                                <li>• Projektové skupiny</li>
+                                                <li>• Přepsání globálních nastavení</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Label Whitelist -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">✅</span>
+                                        Label Whitelist pro Training
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">Definujte, které třídy budou zahrnuty do procesu trénování. To umožňuje fokusovat učení pouze na relevantní objekty.</p>
+
+                                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                                        <div class="flex gap-3">
+                                            <span class="text-xl">⚠️</span>
+                                            <div>
+                                                <h5 class="font-semibold text-yellow-900">Důležité upozornění</h5>
+                                                <p class="text-sm text-yellow-700 mt-1">Whitelist ovlivňuje, které třídy budou detekovány po dotrénování. Třídy mimo whitelist nebudou v detekci dostupné.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="font-semibold text-sm mb-2">Jak nastavit whitelist:</h5>
+                                        <ol class="text-sm space-y-2 text-gray-700">
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                                <p>Otevřete LabelSettings (ikona ozubeného kola u tříd)</p>
+                                            </li>
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                                <p>Přejděte na záložku "Training Whitelist"</p>
+                                            </li>
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                                <p>Zaškrtněte třídy, které chcete zahrnout do trénování</p>
+                                            </li>
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+                                                <p>Uložte změny a spusťte trénování</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <!-- ClassEditor -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🎨</span>
+                                        ClassEditor - Vizuální odlišení
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">Upravte vzhled jednotlivých tříd pro lepší vizuální orientaci při analýze výsledků.</p>
+
+                                    <div class="grid md:grid-cols-3 gap-4">
+                                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                                            <div class="w-12 h-12 bg-red-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                                                <span class="text-white text-xl">🔫</span>
+                                            </div>
+                                            <p class="text-sm font-medium">Barva třídy</p>
+                                            <p class="text-xs text-gray-500">Vlastní barva pro bounding boxy</p>
+                                        </div>
+                                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                                            <div class="w-12 h-12 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                                                <span class="text-white text-xl">🏷️</span>
+                                            </div>
+                                            <p class="text-sm font-medium">Ikona třídy</p>
+                                            <p class="text-xs text-gray-500">Volitelná emoji nebo ikona</p>
+                                        </div>
+                                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                                            <div class="w-12 h-12 bg-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                                                <span class="text-white text-xl">📁</span>
+                                            </div>
+                                            <p class="text-sm font-medium">Skupina</p>
+                                            <p class="text-xs text-gray-500">Zařazení do logické skupiny</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-xs text-blue-800">
+                                            <strong>💡 Tip:</strong> Používejte kontrastní barvy pro třídy, které se často vyskytují společně. Usnadní to vizuální analýzu výsledků.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

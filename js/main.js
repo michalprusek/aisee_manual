@@ -211,7 +211,7 @@ async function loadAllComponents() {
         { url: 'components/section-search.html', containerId: 'search-container' },
         { url: 'components/section-reports.html', containerId: 'reports-container' },
         { url: 'components/section-advanced.html', containerId: 'advanced-container' },
-        { url: 'components/section-faq.html', containerId: 'faq-container' },
+        { url: 'components/section-formats.html', containerId: 'formats-container' },
         { url: 'components/footer.html', containerId: 'footer-container' }
     ];
 

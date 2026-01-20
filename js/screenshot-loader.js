@@ -18,7 +18,12 @@ const knownScreenshots = {
     'detect-image-search': 'screenshot.mov',
     'detect-learned-class': 'screenshot.mov',
     'detect-text-search': 'screenshot.mov',
-    'find-similar-results': 'screenshot.mov'
+    'find-similar-results': 'screenshot.mov',
+    // Settings section screenshots
+    'settings-location': 'screenshot.png',
+    'settings-theme': 'screenshot.png',
+    'settings-language': 'screenshot.png',
+    'change-password': 'screenshot.png'
 };
 
 const screenshotMap = {};

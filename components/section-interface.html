@@ -64,6 +64,18 @@
                                         <li>Multi-video (až 4 videa)</li>
                                     </ul>
                                 </div>
+
+                                <!-- Multi-video režim -->
+                                <div class="bg-blue-50 rounded-lg p-3 mt-2 border border-blue-100">
+                                    <p class="font-semibold text-sm text-blue-900 mb-2">🖼️ Multi-video režim:</p>
+                                    <div class="text-xs text-blue-800 space-y-1">
+                                        <p>• <strong>Aktivace:</strong> Zaškrtněte více sekvencí v seznamu Zdroje</p>
+                                        <p>• <strong>Zobrazení:</strong> Videa se zobrazí v mřížce 2x2 (max 4 současně)</p>
+                                        <p>• <strong>Synchronizace:</strong> Všechna videa sdílí stejný globální čas</p>
+                                        <p>• <strong>Použití:</strong> Ideální pro porovnání záběrů z více kamer</p>
+                                    </div>
+                                </div>
+
                                 <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm" onclick="event.stopPropagation()">
                                     <span class="text-lg">+</span> Nahrát video
                                 </button>
@@ -197,11 +209,50 @@
                                     </div>
                                     <div class="flex items-center gap-3">
                                         <span class="text-yellow-600">🎚️</span>
-                                        <span>Confidence level: slider 1-10 pro filtrování výsledků</span>
+                                        <span>Confidence level: slider 1-7 pro filtrování výsledků</span>
                                     </div>
                                     <div class="flex items-center gap-3">
                                         <span class="text-yellow-600">⚙️</span>
                                         <span>Tracky nastavené v pravém panelu</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Multi-Select - NOVÁ SEKCE -->
+                            <div class="mt-4 pt-4 border-t border-yellow-100">
+                                <h6 class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>✅</span> Multi-Select (Hromadný výběr)
+                                </h6>
+                                <p class="text-xs text-gray-600 mb-3 ml-6">Vyberte více výsledků najednou pro hromadné operace:</p>
+
+                                <div class="ml-6 space-y-2">
+                                    <div class="bg-white rounded-lg p-3 border border-yellow-100">
+                                        <h6 class="font-semibold text-xs mb-2">⌨️ Klávesové zkratky:</h6>
+                                        <div class="grid grid-cols-2 gap-2 text-xs">
+                                            <div class="flex items-center gap-2">
+                                                <kbd class="px-2 py-1 bg-gray-100 rounded text-xs font-mono">Ctrl</kbd>
+                                                <span>+ klik</span>
+                                            </div>
+                                            <span class="text-gray-600">Přidá/odebere jednotlivý výsledek</span>
+                                            <div class="flex items-center gap-2">
+                                                <kbd class="px-2 py-1 bg-gray-100 rounded text-xs font-mono">Shift</kbd>
+                                                <span>+ klik</span>
+                                            </div>
+                                            <span class="text-gray-600">Vybere rozsah výsledků</span>
+                                            <div class="flex items-center gap-2">
+                                                <kbd class="px-2 py-1 bg-gray-100 rounded text-xs font-mono">Ctrl+A</kbd>
+                                            </div>
+                                            <span class="text-gray-600">Vybere všechny výsledky</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-lg p-3 border border-yellow-100">
+                                        <h6 class="font-semibold text-xs mb-2">🎯 Hromadné akce:</h6>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">➕ Přidat do reportu</span>
+                                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">📤 Export</span>
+                                            <span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs">🗑️ Smazat</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -415,11 +466,130 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- BasketFilter - NOVÁ SEKCE -->
+                            <div class="mt-4 pt-4 border-t border-purple-100">
+                                <h6 class="font-semibold text-md mb-2 flex items-center gap-2 text-purple-700">
+                                    <span>🧺</span> Košík (Basket Filter)
+                                </h6>
+                                <p class="text-sm text-gray-600 mb-3">Manuálně vytvořená kolekce tracků. Přetáhněte výsledky do košíku pro vytvoření vlastní sady nálezů.</p>
+
+                                <div class="space-y-3">
+                                    <div class="bg-white/70 rounded-lg p-3 border border-purple-100">
+                                        <h6 class="font-semibold text-xs mb-2">Jak to funguje:</h6>
+                                        <ol class="text-xs space-y-1 text-gray-700">
+                                            <li>1. Košík uchovává seznam track ID, které jste do něj přidali</li>
+                                            <li>2. Při zobrazení načte kompletní data tracků z databáze</li>
+                                            <li>3. Zachovává původní metadata (čas, confidence, bounding boxy)</li>
+                                            <li>4. Funguje jako filtr - lze kombinovat s dalšími filtry</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="bg-white/70 rounded-lg p-3 border border-purple-100">
+                                        <h6 class="font-semibold text-xs mb-2">💡 Použití:</h6>
+                                        <ul class="text-xs space-y-1 text-gray-600">
+                                            <li>• <strong>Ruční kurátorství</strong> - vyberte zajímavé nálezy pro další analýzu</li>
+                                            <li>• <strong>Porovnání</strong> - seskupte podobné objekty do jednoho košíku</li>
+                                            <li>• <strong>Export</strong> - exportujte pouze vybrané tracky</li>
+                                            <li>• <strong>Diff Filter</strong> - použijte košík jako vstup pro rozdílový filtr</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- Klávesové zkratky -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mt-8">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span class="text-lg">⌨️</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Klávesové zkratky</h3>
+            </div>
+            <p class="text-gray-600 text-sm">Rychlejší práce s aplikací pomocí klávesnice</p>
+        </div>
+        <div class="p-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Přehrávání -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                        <span>🎬</span> Přehrávání videa
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Play/Pause</span>
+                            <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">Space</kbd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Předchozí snímek</span>
+                            <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">⏮️</kbd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Následující snímek</span>
+                            <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">⏭️</kbd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigace výsledků -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                        <span>📊</span> Navigace výsledků
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Předchozí výsledek</span>
+                            <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">←</kbd>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Následující výsledek</span>
+                            <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">→</kbd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Select -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                        <span>✅</span> Hromadný výběr
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Přidat/odebrat z výběru</span>
+                            <div class="flex gap-1">
+                                <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">Ctrl</kbd>
+                                <span class="text-gray-400">+</span>
+                                <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">klik</kbd>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Vybrat rozsah</span>
+                            <div class="flex gap-1">
+                                <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">Shift</kbd>
+                                <span class="text-gray-400">+</span>
+                                <kbd class="px-2 py-1 bg-white border border-gray-200 rounded text-xs font-mono">klik</kbd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div class="flex gap-3">
+                    <span class="text-xl">💡</span>
+                    <div>
+                        <h5 class="font-semibold text-yellow-900">Tip pro efektivní práci</h5>
+                        <p class="text-sm text-yellow-700 mt-1">Kombinujte šipky pro navigaci s mezerníkem pro přehrávání. Při analýze výsledků použijte ← → pro procházení detekcí a Space pro kontrolu videa.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -21,6 +21,9 @@
                             <button onclick="showTab('projects', this)" class="tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
                                 📁 Projekty
                             </button>
+                            <button onclick="showTab('settings', this)" class="tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
+                                ⚙️ Nastavení
+                            </button>
                         </div>
                         
                         <!-- Tab content Přihlášení -->
@@ -156,9 +159,196 @@
                                 </div>
                             </div>
                         </div>
-    
+
+                        <!-- Tab content Nastavení -->
+                        <div id="settings" class="tab-content mt-6 hidden">
+                            <p class="text-gray-700 mb-4">Přizpůsobte si aplikaci AISEE podle vašich preferencí:</p>
+
+                            <div class="space-y-6">
+                                <!-- Kde najít nastavení -->
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">⚙️</span>
+                                        Kde najít nastavení
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">Nastavení aplikace naleznete v pravém panelu - klikněte na ikonu ozubeného kola (⚙️) v postranním toolbaru.</p>
+
+                                    <!-- Screenshot umístění nastavení -->
+                                    <div class="screenshot-container mb-4">
+                                        <img data-screenshot="settings-location"
+                                             src="screenshots/settings-location/screenshot.png"
+                                             alt="Kde najít nastavení"
+                                             class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                             loading="lazy">
+                                        <p class="text-sm text-gray-500 mt-2 text-center italic">Ikona nastavení (⚙️) v pravém panelu aplikace</p>
+                                    </div>
+                                </div>
+
+                                <!-- Reset hesla - důležitá informace -->
+                                <div class="bg-amber-50 border border-amber-300 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🔐</span>
+                                        Změna hesla při prvním přihlášení
+                                    </h4>
+                                    <div class="bg-white border border-amber-200 rounded-lg p-4 mb-4">
+                                        <div class="flex gap-3">
+                                            <svg class="w-6 h-6 text-amber-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <div>
+                                                <p class="font-semibold text-amber-900">Povinná změna hesla</p>
+                                                <p class="text-sm text-amber-700 mt-1">Při prvním přihlášení do systému budete vyzváni ke změně hesla. Toto je bezpečnostní opatření pro ochranu vašeho účtu.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Screenshot změny hesla -->
+                                    <div class="screenshot-container mb-4">
+                                        <img data-screenshot="change-password"
+                                             src="screenshots/change-password/screenshot.png"
+                                             alt="Dialog změny hesla"
+                                             class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                             loading="lazy">
+                                        <p class="text-sm text-gray-500 mt-2 text-center italic">Dialog pro změnu hesla při prvním přihlášení</p>
+                                    </div>
+
+                                    <ol class="space-y-3 text-gray-700">
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                            <p>Zadejte současné heslo do pole "Současné heslo"</p>
+                                        </li>
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                            <p>Zadejte nové heslo do pole "Nové heslo"</p>
+                                        </li>
+                                        <li class="flex gap-3">
+                                            <span class="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                            <p>Klikněte na tlačítko "Změnit" pro potvrzení změny</p>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <!-- Změna motivu -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🎨</span>
+                                        Změna motivu
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">AISEE nabízí několik barevných motivů pro personalizaci vzhledu aplikace.</p>
+
+                                    <!-- Screenshot nastavení motivu -->
+                                    <div class="screenshot-container mb-4">
+                                        <img data-screenshot="settings-theme"
+                                             src="screenshots/settings-theme/screenshot.png"
+                                             alt="Nastavení motivu"
+                                             class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                             loading="lazy">
+                                        <p class="text-sm text-gray-500 mt-2 text-center italic">Výběr barevného motivu aplikace</p>
+                                    </div>
+
+                                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+                                        <div class="bg-gray-900 rounded-lg p-3 text-center">
+                                            <span class="text-lg">🎬</span>
+                                            <p class="text-sm font-medium text-white">Oppenheimer</p>
+                                            <p class="text-xs text-gray-400">Tmavý motiv</p>
+                                        </div>
+                                        <div class="bg-pink-400 rounded-lg p-3 text-center">
+                                            <span class="text-lg">💖</span>
+                                            <p class="text-sm font-medium text-white">Barbie</p>
+                                            <p class="text-xs text-pink-100">Růžový motiv</p>
+                                        </div>
+                                        <div class="bg-gray-100 rounded-lg p-3 text-center border border-gray-300">
+                                            <span class="text-lg">☀️</span>
+                                            <p class="text-sm font-medium text-gray-800">Light</p>
+                                            <p class="text-xs text-gray-500">Světlý motiv</p>
+                                        </div>
+                                        <div class="bg-blue-100 rounded-lg p-3 text-center border border-blue-300">
+                                            <span class="text-lg">💙</span>
+                                            <p class="text-sm font-medium text-blue-800">Light Blue</p>
+                                            <p class="text-xs text-blue-500">Světle modrý</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-xs text-blue-800">
+                                            <strong>💡 Tip:</strong> Motiv změníte kliknutím na ikonu menu (☰) v pravém horním rohu a výběrem z nabídky.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Volba jazyka -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🌐</span>
+                                        Volba jazyka (CS/EN)
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">Aplikace AISEE je dostupná v češtině a angličtině. Jazyk můžete kdykoliv změnit.</p>
+
+                                    <!-- Screenshot nastavení jazyka -->
+                                    <div class="screenshot-container mb-4">
+                                        <img data-screenshot="settings-language"
+                                             src="screenshots/settings-language/screenshot.png"
+                                             alt="Nastavení jazyka"
+                                             class="w-full rounded-lg shadow-lg border border-gray-200 screenshot-zoom cursor-pointer"
+                                             loading="lazy">
+                                        <p class="text-sm text-gray-500 mt-2 text-center italic">Dropdown pro volbu jazyka rozhraní</p>
+                                    </div>
+
+                                    <div class="flex gap-4">
+                                        <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
+                                            <span class="text-lg">🇨🇿</span>
+                                            <span class="font-medium">Čeština</span>
+                                        </div>
+                                        <div class="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-lg border border-gray-200">
+                                            <span class="text-lg">🇬🇧</span>
+                                            <span class="font-medium">English</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-xs text-blue-800">
+                                            <strong>💡 Tip:</strong> Změna jazyka se projeví okamžitě v celém rozhraní aplikace. Nastavení se uloží pro příští přihlášení.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Odhlášení -->
+                                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🚪</span>
+                                        Odhlášení z aplikace
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">Pro odhlášení z aplikace použijte ikonu menu v pravém horním rohu.</p>
+
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="font-semibold text-sm mb-2">Postup odhlášení:</h5>
+                                        <ol class="text-sm space-y-2 text-gray-700">
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                                                <p>Klikněte na ikonu menu (☰) v pravém horním rohu aplikace</p>
+                                            </li>
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                                                <p>Vyberte možnost <strong>"Odhlásit"</strong> (Logout)</p>
+                                            </li>
+                                            <li class="flex gap-3">
+                                                <span class="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                                                <p>Budete přesměrováni na přihlašovací stránku</p>
+                                            </li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                        <p class="text-xs text-yellow-800">
+                                            <strong>⚠️ Poznámka:</strong> Před odhlášením se ujistěte, že jste uložili všechny důležité změny. Rozpracované reporty se neukládají automaticky.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    
+
                     <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
                         <div class="flex gap-3">
                             <span class="text-xl">💡</span>
