@@ -134,9 +134,95 @@
                         </div>
                     </div>
 
+                    <!-- Export Dialog -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold mb-4">📦 Export Dialog (rozšířený export výsledků)</h4>
+                        <p class="text-gray-600 mb-4">Kromě HTML reportu nabízí AISEE rozšířený Export Dialog s mnoha možnostmi exportu dat:</p>
+
+                        <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-4">
+                            <h5 class="font-semibold mb-3">Dostupné formáty exportu:</h5>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-white rounded-lg p-4 border border-purple-100">
+                                    <h6 class="font-semibold text-sm mb-2">📦 ZIP archiv</h6>
+                                    <p class="text-xs text-gray-600">Kompletní export jako ZIP soubor obsahující obrázky, metadata a volitelně video klipy</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border border-purple-100">
+                                    <h6 class="font-semibold text-sm mb-2">📊 CSV metadata</h6>
+                                    <p class="text-xs text-gray-600">Export metadat v tabulkovém formátu pro zpracování v Excelu nebo jiných nástrojích</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border border-purple-100">
+                                    <h6 class="font-semibold text-sm mb-2">🖼️ Obrázky</h6>
+                                    <p class="text-xs text-gray-600">Export snímků s/bez bounding boxů, volitelně v originálním rozlišení videa</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border border-purple-100">
+                                    <h6 class="font-semibold text-sm mb-2">🎬 Video klipy</h6>
+                                    <p class="text-xs text-gray-600">Krátké video úseky zachycující detekce v kontextu okolních snímků</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-6 mb-4">
+                            <h5 class="font-semibold mb-3">Konfigurovatelné sloupce CSV exportu:</h5>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" checked disabled class="mt-0.5">
+                                    <span>Timestamp</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" checked disabled class="mt-0.5">
+                                    <span>Confidence</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" checked disabled class="mt-0.5">
+                                    <span>Třída (label)</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>FPS</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>SHA hash souboru</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>Track ID</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>Bounding box souřadnice</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>Název sekvence</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" disabled class="mt-0.5">
+                                    <span>Název souboru</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                            <div class="flex gap-3">
+                                <span class="text-xl">⚠️</span>
+                                <div>
+                                    <h5 class="font-semibold text-yellow-900">Limit exportu</h5>
+                                    <p class="text-sm text-yellow-700 mt-1">Export je omezen na maximálně <strong>500 položek</strong> najednou. Pro export většího množství dat použijte filtrování k rozdělení exportu na menší části.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <p class="text-xs text-blue-800">
+                                <strong>💡 Tip:</strong> Zaškrtněte <strong>"Originální rozlišení"</strong> pro export obrázků v plném rozlišení zdrojového videa. Ve výchozím stavu se exportují zmenšené náhledy.
+                            </p>
+                        </div>
+                    </div>
+
                     <!-- Export a tisk -->
                     <div class="mb-8">
-                        <h4 class="text-lg font-semibold mb-4">🖨️ Export a tisk</h4>
+                        <h4 class="text-lg font-semibold mb-4">🖨️ HTML Report a PDF tisk</h4>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
                                 <h5 class="font-semibold mb-2">HTML Export:</h5>

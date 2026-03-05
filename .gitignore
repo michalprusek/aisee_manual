@@ -1,6 +1,7 @@
 # Node modules
 node_modules/
-
+screenshots_latex/
+main.tex
 # Logs
 *.log
 npm-debug.log*

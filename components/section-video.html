@@ -377,6 +377,87 @@
                                     </ol>
                                 </div>
 
+                                <!-- Rozšířené funkce Sequence Editoru -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">🔧 Rozšířené funkce Sequence Editoru:</h5>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">↔️</span>
+                                            <div>
+                                                <strong>Přesouvání souborů mezi sekvencemi</strong>
+                                                <p class="text-xs text-gray-500">Přetáhněte video soubor z jedné sekvence do jiné</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">🔤</span>
+                                            <div>
+                                                <strong>Řazení souborů</strong>
+                                                <p class="text-xs text-gray-500">Seřaďte soubory podle názvu nebo data vytvoření</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">🔄</span>
+                                            <div>
+                                                <strong>Reset časových offsetů</strong>
+                                                <p class="text-xs text-gray-500">Obnovte výchozí časové posuny pro všechny soubory v sekvenci</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <span class="text-green-600">🔗</span>
+                                            <div>
+                                                <strong>Slučování sekvencí</strong>
+                                                <p class="text-xs text-gray-500">Spojte více sekvencí do jedné (např. záznamy ze stejné kamery)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stavy zpracování souborů -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">📊 Stavy zpracování souborů:</h5>
+                                    <p class="text-xs text-gray-600 mb-2">Každý soubor v sekvenci zobrazuje svůj aktuální stav zpracování:</p>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                        <div class="bg-blue-50 rounded p-2 text-center">
+                                            <span class="text-sm">📤</span>
+                                            <p class="text-xs font-medium">Uploaded</p>
+                                            <p class="text-xs text-gray-500">Nahráno</p>
+                                        </div>
+                                        <div class="bg-orange-50 rounded p-2 text-center">
+                                            <span class="text-sm">🎞️</span>
+                                            <p class="text-xs font-medium">Transcoding</p>
+                                            <p class="text-xs text-gray-500">Konverze</p>
+                                        </div>
+                                        <div class="bg-yellow-50 rounded p-2 text-center">
+                                            <span class="text-sm">⏳</span>
+                                            <p class="text-xs font-medium">Waiting</p>
+                                            <p class="text-xs text-gray-500">Ve frontě</p>
+                                        </div>
+                                        <div class="bg-purple-50 rounded p-2 text-center">
+                                            <span class="text-sm">🔄</span>
+                                            <p class="text-xs font-medium">Processing</p>
+                                            <p class="text-xs text-gray-500">Zpracovává se</p>
+                                        </div>
+                                        <div class="bg-green-50 rounded p-2 text-center">
+                                            <span class="text-sm">✅</span>
+                                            <p class="text-xs font-medium">Done</p>
+                                            <p class="text-xs text-gray-500">Dokončeno</p>
+                                        </div>
+                                        <div class="bg-red-50 rounded p-2 text-center">
+                                            <span class="text-sm">❌</span>
+                                            <p class="text-xs font-medium">Failed</p>
+                                            <p class="text-xs text-gray-500">Chyba</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- SHA Hash detekce duplicit -->
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-sm mb-2 text-gray-800">🔑 Detekce duplicitních souborů (SHA Hash):</h5>
+                                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                                        <p class="text-xs text-blue-800">Při nahrávání souborů systém automaticky vypočítá SHA hash každého souboru a porovná ho s již nahranými soubory. Pokud je detekován duplicitní soubor (stejný hash), systém vás upozorní a nabídne možnost přeskočit nahrání duplicity. Tím se zabrání zbytečnému zpracování stejných dat.</p>
+                                    </div>
+                                </div>
+
                                 <!-- Upozornění -->
                                 <div class="bg-red-50 border border-red-200 rounded-lg p-4">
                                     <div class="flex gap-3">

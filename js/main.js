@@ -122,12 +122,21 @@ function scrollToSection(sectionId, tabId = null) {
                 }
                 // For Advanced section tabs
                 else if (sectionId === 'advanced') {
-                    // Find the correct tab button
                     const buttons = document.querySelectorAll('.adv-tab-btn');
                     buttons.forEach(btn => {
                         const onclick = btn.getAttribute('onclick');
                         if (onclick && onclick.includes(`'${tabId}'`)) {
                             showAdvancedTab(tabId, btn);
+                        }
+                    });
+                }
+                // For Admin section tabs
+                else if (sectionId === 'admin') {
+                    const buttons = document.querySelectorAll('.admin-tab-btn');
+                    buttons.forEach(btn => {
+                        const onclick = btn.getAttribute('onclick');
+                        if (onclick && onclick.includes(`'${tabId}'`)) {
+                            showAdminTab(tabId, btn);
                         }
                     });
                 }
@@ -172,6 +181,24 @@ function showAdvancedTab(tabName, button) {
     button.classList.add('text-white', 'bg-indigo-600', 'shadow-sm');
 }
 
+// Admin tab functionality
+function showAdminTab(tabName, button) {
+    // Hide all tabs
+    document.querySelectorAll('.admin-tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+    });
+    // Show selected tab
+    document.getElementById(tabName).classList.remove('hidden');
+
+    // Update button styles
+    document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+        btn.classList.remove('text-white', 'bg-red-600', 'shadow-sm');
+        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
+    });
+    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
+    button.classList.add('text-white', 'bg-red-600', 'shadow-sm');
+}
+
 // Add animation on scroll
 const observerOptions = {
     threshold: 0.1,
@@ -211,6 +238,7 @@ async function loadAllComponents() {
         { url: 'components/section-search.html', containerId: 'search-container' },
         { url: 'components/section-reports.html', containerId: 'reports-container' },
         { url: 'components/section-advanced.html', containerId: 'advanced-container' },
+        { url: 'components/section-admin.html', containerId: 'admin-container' },
         { url: 'components/section-formats.html', containerId: 'formats-container' },
         { url: 'components/footer.html', containerId: 'footer-container' }
     ];
