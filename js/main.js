@@ -207,6 +207,7 @@ async function loadComponent(url, containerId) {
 
 // Function to load all components
 async function loadAllComponents() {
+    const cacheBuster = 'v=4';
     const components = [
         { url: 'components/header.html', containerId: 'header-container' },
         { url: 'components/section-start.html', containerId: 'start-container' },
@@ -222,8 +223,8 @@ async function loadAllComponents() {
 
     // Load all components in parallel
     await Promise.all(
-        components.map(component => 
-            loadComponent(component.url, component.containerId)
+        components.map(component =>
+            loadComponent(component.url + '?' + cacheBuster, component.containerId)
         )
     );
 
