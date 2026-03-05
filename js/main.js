@@ -75,6 +75,7 @@ function updateScroll() {
     // Update active state in sidebar
     navItems.forEach(item => {
         item.classList.remove('active');
+        if (!item.onclick) return;
         const sectionName = item.onclick.toString().match(/scrollToSection\('(.+?)'\)/);
         if (sectionName && sectionName[1] === currentSection) {
             item.classList.add('active');
@@ -108,95 +109,62 @@ function scrollToSection(sectionId, tabId = null) {
 
         // If a tab ID is provided, switch to that tab after scrolling
         if (tabId) {
-            setTimeout(() => {
-                // For Start section tabs
-                if (sectionId === 'start') {
-                    // Find the correct tab button
-                    const buttons = document.querySelectorAll('.tab-btn');
+            const tabConfig = {
+                'start':    { btnClass: '.tab-btn',       handler: showTab },
+                'advanced': { btnClass: '.adv-tab-btn',   handler: showAdvancedTab },
+                'admin':    { btnClass: '.admin-tab-btn', handler: showAdminTab }
+            };
+            const config = tabConfig[sectionId];
+            if (config) {
+                setTimeout(() => {
+                    const buttons = document.querySelectorAll(config.btnClass);
                     buttons.forEach(btn => {
                         const onclick = btn.getAttribute('onclick');
-                        if (onclick && onclick.includes(`'${tabId}'`)) {
-                            showTab(tabId, btn);
+                        if (onclick && onclick.includes("'" + tabId + "'")) {
+                            config.handler(tabId, btn);
                         }
                     });
-                }
-                // For Advanced section tabs
-                else if (sectionId === 'advanced') {
-                    const buttons = document.querySelectorAll('.adv-tab-btn');
-                    buttons.forEach(btn => {
-                        const onclick = btn.getAttribute('onclick');
-                        if (onclick && onclick.includes(`'${tabId}'`)) {
-                            showAdvancedTab(tabId, btn);
-                        }
-                    });
-                }
-                // For Admin section tabs
-                else if (sectionId === 'admin') {
-                    const buttons = document.querySelectorAll('.admin-tab-btn');
-                    buttons.forEach(btn => {
-                        const onclick = btn.getAttribute('onclick');
-                        if (onclick && onclick.includes(`'${tabId}'`)) {
-                            showAdminTab(tabId, btn);
-                        }
-                    });
-                }
-            }, 300); // Small delay to ensure scroll completes first
+                }, 300);
+            }
         }
     }
 }
 
-// Tab functionality
+// Generic tab-switching function
+function showSectionTab(tabName, button, contentClass, btnClass, activeColor) {
+    document.querySelectorAll('.' + contentClass).forEach(tab => {
+        tab.classList.add('hidden');
+    });
+
+    const targetTab = document.getElementById(tabName);
+    if (!targetTab) {
+        console.error(`Tab content element not found: "${tabName}"`);
+        return;
+    }
+    targetTab.classList.remove('hidden');
+
+    const inactiveClasses = ['text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm'];
+    const activeClasses = ['text-white', activeColor, 'shadow-sm'];
+
+    document.querySelectorAll('.' + btnClass).forEach(btn => {
+        btn.classList.remove(...activeClasses);
+        btn.classList.add(...inactiveClasses);
+    });
+    button.classList.remove(...inactiveClasses);
+    button.classList.add(...activeClasses);
+}
+
+// Tab function wrappers (called from onclick attributes in HTML)
 function showTab(tabName, button) {
-    // Hide all tabs
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.add('hidden');
-    });
-    // Show selected tab
-    document.getElementById(tabName).classList.remove('hidden');
-
-    // Update button styles - new pill style
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('text-white', 'bg-blue-600', 'shadow-sm');
-        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    });
-    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    button.classList.add('text-white', 'bg-blue-600', 'shadow-sm');
+    showSectionTab(tabName, button, 'tab-content', 'tab-btn', 'bg-blue-600');
 }
 
-// Advanced tab functionality
 function showAdvancedTab(tabName, button) {
-    // Hide all tabs
-    document.querySelectorAll('.adv-tab-content').forEach(tab => {
-        tab.classList.add('hidden');
-    });
-    // Show selected tab
-    document.getElementById(tabName).classList.remove('hidden');
-
-    // Update button styles - new pill style
-    document.querySelectorAll('.adv-tab-btn').forEach(btn => {
-        btn.classList.remove('text-white', 'bg-indigo-600', 'shadow-sm');
-        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    });
-    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    button.classList.add('text-white', 'bg-indigo-600', 'shadow-sm');
+    showSectionTab(tabName, button, 'adv-tab-content', 'adv-tab-btn', 'bg-indigo-600');
 }
 
-// Admin tab functionality
 function showAdminTab(tabName, button) {
-    // Hide all tabs
-    document.querySelectorAll('.admin-tab-content').forEach(tab => {
-        tab.classList.add('hidden');
-    });
-    // Show selected tab
-    document.getElementById(tabName).classList.remove('hidden');
-
-    // Update button styles
-    document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-        btn.classList.remove('text-white', 'bg-red-600', 'shadow-sm');
-        btn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    });
-    button.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-200', 'hover:bg-gray-100', 'hover:shadow-sm');
-    button.classList.add('text-white', 'bg-red-600', 'shadow-sm');
+    showSectionTab(tabName, button, 'admin-tab-content', 'admin-tab-btn', 'bg-red-600');
 }
 
 // Add animation on scroll
@@ -219,12 +187,21 @@ document.querySelectorAll('section').forEach(section => {
 
 // Component loader function
 async function loadComponent(url, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error(`Kontejner "${containerId}" nenalezen v DOM pro komponentu ${url}`);
+        return;
+    }
     try {
         const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: Nepodařilo se načíst ${url}`);
+        }
         const html = await response.text();
-        document.getElementById(containerId).innerHTML = html;
+        container.innerHTML = html;
     } catch (error) {
-        console.error(`Error loading component ${url}:`, error);
+        console.error(`Chyba při načítání komponenty ${url}:`, error);
+        container.innerHTML = '<div class="p-8 text-center text-red-500">Nepodařilo se načíst sekci. Zkuste obnovit stránku.</div>';
     }
 }
 
@@ -263,9 +240,6 @@ function initializeAfterLoad() {
 
     // Header and navigation positioning is handled by CSS
 
-    // Re-initialize FAQ functionality if it exists
-    initializeFAQ();
-    
     // Initialize dynamic screenshot loading
     if (window.screenshotLoader) {
         window.screenshotLoader.init();
@@ -273,28 +247,6 @@ function initializeAfterLoad() {
     
     // Dispatch event for other scripts
     document.dispatchEvent(new Event('componentsLoaded'));
-}
-
-// FAQ functionality initialization
-function initializeFAQ() {
-    // This function will be called after components are loaded
-    // to ensure FAQ accordion works properly
-}
-
-// Toggle FAQ accordion (used in the FAQ component)
-function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('svg');
-
-    if (content.style.display === 'none' || content.style.display === '') {
-        content.style.display = 'block';
-        icon.style.transform = 'rotate(180deg)';
-        button.setAttribute('aria-expanded', 'true');
-    } else {
-        content.style.display = 'none';
-        icon.style.transform = 'rotate(0deg)';
-        button.setAttribute('aria-expanded', 'false');
-    }
 }
 
 // Toggle panel functionality for interface section
@@ -340,14 +292,12 @@ function toggleSinglePanel(panelId) {
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', loadAllComponents);
 
-// Screenshot zoom functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Add zoom overlay
+// Screenshot zoom functionality — initialized after components are loaded
+document.addEventListener('componentsLoaded', function() {
     const overlay = document.createElement('div');
     overlay.className = 'zoom-overlay';
     document.body.appendChild(overlay);
-    
-    // Add click handlers to all screenshots
+
     const screenshots = document.querySelectorAll('img[alt*="AISEE"]');
     screenshots.forEach(img => {
         img.classList.add('screenshot-zoom');
@@ -361,8 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Click overlay to close
+
     overlay.addEventListener('click', function() {
         const zoomedImg = document.querySelector('.screenshot-zoom.zoomed');
         if (zoomedImg) {

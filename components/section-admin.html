@@ -7,7 +7,7 @@
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900">Administrace</h2>
             </div>
-            <p class="text-gray-600 mt-2">Sprava uzivatelu, fronta uloh a systemove nastaveni</p>
+            <p class="text-gray-600 mt-2">Správa uživatelů, fronta úloh a systémové nastavení</p>
         </div>
 
         <div class="p-8">
@@ -15,111 +15,111 @@
             <div class="mb-8">
                 <div class="flex gap-2 border-b border-gray-200 bg-gray-50 p-1 rounded-t-lg">
                     <button onclick="showAdminTab('user-management', this)" class="admin-tab-btn px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md transition-all duration-200 shadow-sm">
-                        👥 Sprava uzivatelu
+                        👥 Správa uživatelů
                     </button>
                     <button onclick="showAdminTab('task-queue', this)" class="admin-tab-btn px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 rounded-md transition-all duration-200 border border-gray-200 hover:shadow-sm">
-                        📋 Fronta uloh
+                        📋 Fronta úloh
                     </button>
                 </div>
 
                 <!-- User Management tab -->
                 <div id="user-management" class="admin-tab-content mt-6">
-                    <h3 class="font-semibold text-gray-900 mb-4">Sprava uzivatelu</h3>
+                    <h3 class="font-semibold text-gray-900 mb-4">Správa uživatelů</h3>
 
                     <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
                         <div class="flex gap-3">
                             <span class="text-xl">🔒</span>
                             <div>
-                                <h4 class="font-semibold text-red-900">Pristup pouze pro administratory</h4>
-                                <p class="text-sm text-red-700 mt-1">Sekce Administrace je dostupna pouze pro uzivatele s roli administratora. Bezni uzivatele tuto sekci neuvidi.</p>
+                                <h4 class="font-semibold text-red-900">Přístup pouze pro administrátory</h4>
+                                <p class="text-sm text-red-700 mt-1">Sekce Administrace je dostupná pouze pro uživatele s rolí administrátora. Běžní uživatelé tuto sekci neuvidí.</p>
                             </div>
                         </div>
                     </div>
 
-                    <p class="text-gray-700 mb-6">Admin panel umoznuje kompletni spravu uzivatelu systemu AISEE. Pristupny je pres ikonu spravce v hlavnim menu.</p>
+                    <p class="text-gray-700 mb-6">Admin panel umožňuje kompletní správu uživatelů systému AISEE. Přístupný je přes ikonu správce v hlavním menu.</p>
 
-                    <!-- Vytvoreni uzivatele -->
+                    <!-- Vytvoření uživatele -->
                     <div class="mb-6">
                         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                            <span>➕</span> Vytvoreni noveho uzivatele
+                            <span>➕</span> Vytvoření nového uživatele
                         </h4>
                         <div class="bg-white border border-gray-200 rounded-lg p-6">
                             <ol class="space-y-3 text-sm text-gray-700">
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
-                                    <p>Otevrete Admin panel kliknutim na ikonu spravce</p>
+                                    <p>Otevřete Admin panel kliknutím na ikonu správce</p>
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
-                                    <p>Kliknete na tlacitko <strong>"Pridat uzivatele"</strong></p>
+                                    <p>Klikněte na tlačítko <strong>"Přidat uživatele"</strong></p>
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
-                                    <p>Vyplnte uzivatelske jmeno a pocatecni heslo</p>
+                                    <p>Vyplňte uživatelské jméno a počáteční heslo</p>
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">4</span>
-                                    <p>Volitelne zazkrtnete <strong>"Vynucena zmena hesla"</strong> - uzivatel bude muset zmenit heslo pri prvnim prihlaseni</p>
+                                    <p>Volitelně zaškrtněte <strong>"Vynucená změna hesla"</strong> - uživatel bude muset změnit heslo při prvním přihlášení</p>
                                 </li>
                                 <li class="flex gap-3">
                                     <span class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">5</span>
-                                    <p>Potvrdte vytvoreni tlacitkem <strong>"Ulozit"</strong></p>
+                                    <p>Potvrďte vytvoření tlačítkem <strong>"Uložit"</strong></p>
                                 </li>
                             </ol>
                         </div>
                     </div>
 
-                    <!-- Sprava existujicich uzivatelu -->
+                    <!-- Správa existujících uživatelů -->
                     <div class="mb-6">
                         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                            <span>👤</span> Sprava existujicich uzivatelu
+                            <span>👤</span> Správa existujících uživatelů
                         </h4>
                         <div class="bg-white border border-gray-200 rounded-lg p-6">
-                            <p class="text-sm text-gray-600 mb-4">Pro kazdého uzivatele v seznamu jsou dostupne nasledujici akce:</p>
+                            <p class="text-sm text-gray-600 mb-4">Pro každého uživatele v seznamu jsou dostupné následující akce:</p>
 
                             <div class="grid md:grid-cols-2 gap-4">
                                 <div class="bg-gray-50 rounded-lg p-4">
                                     <h5 class="font-semibold text-sm mb-2 flex items-center gap-2">
                                         <span class="text-blue-600">🔑</span> Reset hesla
                                     </h5>
-                                    <p class="text-xs text-gray-600">Nastavi nove heslo pro uzivatele. Uzivatel bude informovan o novem hesle.</p>
+                                    <p class="text-xs text-gray-600">Nastaví nové heslo pro uživatele. Uživatel bude informován o novém hesle.</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-4">
                                     <h5 class="font-semibold text-sm mb-2 flex items-center gap-2">
-                                        <span class="text-orange-600">🔐</span> Vynucena zmena hesla
+                                        <span class="text-orange-600">🔐</span> Vynucená změna hesla
                                     </h5>
-                                    <p class="text-xs text-gray-600">Pri pristim prihlaseni bude uzivatel vyzvan ke zmene hesla. Bez zmeny nemuze pokracovat v praci.</p>
+                                    <p class="text-xs text-gray-600">Při příštím přihlášení bude uživatel vyzván ke změně hesla. Bez změny nemůže pokračovat v práci.</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-4">
                                     <h5 class="font-semibold text-sm mb-2 flex items-center gap-2">
-                                        <span class="text-red-600">🗑️</span> Smazani uzivatele
+                                        <span class="text-red-600">🗑️</span> Smazání uživatele
                                     </h5>
-                                    <p class="text-xs text-gray-600">Trvale odstrani uzivatelsky ucet. Tato akce je nevratna.</p>
+                                    <p class="text-xs text-gray-600">Trvale odstraní uživatelský účet. Tato akce je nevratná.</p>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-4">
                                     <h5 class="font-semibold text-sm mb-2 flex items-center gap-2">
-                                        <span class="text-green-600">✏️</span> Uprava uzivatele
+                                        <span class="text-green-600">✏️</span> Úprava uživatele
                                     </h5>
-                                    <p class="text-xs text-gray-600">Zmena uzivatelskeho jmena a dalsich nastaveni uctu.</p>
+                                    <p class="text-xs text-gray-600">Změna uživatelského jména a dalších nastavení účtu.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Vynucena zmena hesla -->
+                    <!-- Vynucená změna hesla -->
                     <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
                         <h4 class="font-semibold text-lg mb-3 flex items-center gap-2">
-                            <span>🔐</span> Vynucena zmena hesla pri prvnim prihlaseni
+                            <span>🔐</span> Vynucená změna hesla při prvním přihlášení
                         </h4>
-                        <p class="text-sm text-gray-700 mb-3">Pokud administrator nastavi uzivateli volbu "Vynucena zmena hesla", pri pristim prihlaseni se zobrazi dialog pro zmenu hesla. Uzivatel musi zadat nove heslo pred tim, nez muze pokracovat v praci s aplikaci.</p>
+                        <p class="text-sm text-gray-700 mb-3">Pokud administrátor nastaví uživateli volbu "Vynucená změna hesla", při příštím přihlášení se zobrazí dialog pro změnu hesla. Uživatel musí zadat nové heslo před tím, než může pokračovat v práci s aplikací.</p>
                         <div class="bg-white rounded-lg p-4 border border-amber-100">
-                            <h5 class="font-semibold text-sm mb-2">Postup pro uzivatele:</h5>
+                            <h5 class="font-semibold text-sm mb-2">Postup pro uživatele:</h5>
                             <ol class="text-sm space-y-1 text-gray-700">
-                                <li>1. Prihlaste se standardnimi udaji</li>
-                                <li>2. Zobrazi se dialog pro zmenu hesla</li>
-                                <li>3. Zadejte nove heslo</li>
-                                <li>4. Potvrdte nove heslo jeho opetovnym zadanim</li>
-                                <li>5. Kliknete na <strong>"Zmenit heslo"</strong></li>
+                                <li>1. Přihlaste se standardními údaji</li>
+                                <li>2. Zobrazí se dialog pro změnu hesla</li>
+                                <li>3. Zadejte nové heslo</li>
+                                <li>4. Potvrďte nové heslo jeho opětovným zadáním</li>
+                                <li>5. Klikněte na <strong>"Změnit heslo"</strong></li>
                             </ol>
                         </div>
                     </div>
@@ -127,55 +127,55 @@
 
                 <!-- Task Queue tab -->
                 <div id="task-queue" class="admin-tab-content mt-6 hidden">
-                    <h3 class="font-semibold text-gray-900 mb-4">Fronta uloh (Task Queue)</h3>
+                    <h3 class="font-semibold text-gray-900 mb-4">Fronta úloh (Task Queue)</h3>
 
                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                         <div class="flex gap-3">
                             <span class="text-xl">📋</span>
                             <div>
-                                <h4 class="font-semibold text-blue-900">Monitoring zpracovani</h4>
-                                <p class="text-sm text-blue-700 mt-1">Fronta uloh zobrazuje prehled vsech pozadovych zpracovani - nahravani videi, detekce objektu, trenovani modelu a dalsi casove narocne operace.</p>
+                                <h4 class="font-semibold text-blue-900">Monitoring zpracování</h4>
+                                <p class="text-sm text-blue-700 mt-1">Fronta úloh zobrazuje přehled všech požadovaných zpracování - nahrávání videí, detekce objektů, trénování modelů a další časově náročné operace.</p>
                             </div>
                         </div>
                     </div>
 
-                    <p class="text-gray-700 mb-6">Kazda uloha v systemu prochazi frontou, ktera zajistuje spravne poradí zpracovani a efektivni vyuziti serverovych prostredku.</p>
+                    <p class="text-gray-700 mb-6">Každá úloha v systému prochází frontou, která zajišťuje správné pořadí zpracování a efektivní využití serverových prostředků.</p>
 
-                    <!-- Stavy uloh -->
+                    <!-- Stavy úloh -->
                     <div class="mb-6">
                         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                            <span>🔄</span> Stavy uloh
+                            <span>🔄</span> Stavy úloh
                         </h4>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                             <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">⏳</span>
                                 <p class="font-semibold text-sm mt-2">Waiting</p>
-                                <p class="text-xs text-gray-600">Ceka ve fronte na zpracovani</p>
+                                <p class="text-xs text-gray-600">Čeká ve frontě na zpracování</p>
                             </div>
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">🔄</span>
                                 <p class="font-semibold text-sm mt-2">Processing</p>
-                                <p class="text-xs text-gray-600">Prave se zpracovava</p>
+                                <p class="text-xs text-gray-600">Právě se zpracovává</p>
                             </div>
                             <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">✅</span>
                                 <p class="font-semibold text-sm mt-2">Completed</p>
-                                <p class="text-xs text-gray-600">Uspesne dokonceno</p>
+                                <p class="text-xs text-gray-600">Úspěšně dokončeno</p>
                             </div>
                             <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">❌</span>
                                 <p class="font-semibold text-sm mt-2">Failed</p>
-                                <p class="text-xs text-gray-600">Zpracovani selhalo</p>
+                                <p class="text-xs text-gray-600">Zpracování selhalo</p>
                             </div>
                             <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">📤</span>
                                 <p class="font-semibold text-sm mt-2">Uploaded</p>
-                                <p class="text-xs text-gray-600">Soubor nahran, ceka na zpracovani</p>
+                                <p class="text-xs text-gray-600">Soubor nahrán, čeká na zpracování</p>
                             </div>
                             <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
                                 <span class="text-2xl">🎞️</span>
                                 <p class="font-semibold text-sm mt-2">Transcoding</p>
-                                <p class="text-xs text-gray-600">Probíha konverze videa</p>
+                                <p class="text-xs text-gray-600">Probíhá konverze videa</p>
                             </div>
                         </div>
                     </div>
@@ -183,36 +183,36 @@
                     <!-- Funkce fronty -->
                     <div class="mb-6">
                         <h4 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                            <span>⚙️</span> Funkce spravce fronty
+                            <span>⚙️</span> Funkce správce fronty
                         </h4>
                         <div class="bg-white border border-gray-200 rounded-lg p-6">
                             <div class="space-y-4">
                                 <div class="flex items-start gap-3">
                                     <span class="text-green-600 mt-1">👁️</span>
                                     <div>
-                                        <strong>Prehled vsech uloh</strong>
-                                        <p class="text-sm text-gray-600">Zobrazeni vsech uloh vsech uzivatelu s informacemi o stavu, casu a typu operace</p>
+                                        <strong>Přehled všech úloh</strong>
+                                        <p class="text-sm text-gray-600">Zobrazení všech úloh všech uživatelů s informacemi o stavu, čase a typu operace</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <span class="text-blue-600 mt-1">🔀</span>
                                     <div>
-                                        <strong>Zmena poradi</strong>
-                                        <p class="text-sm text-gray-600">Prerazeni uloh ve fronte - moznost uprednostnit dulezite ulohy</p>
+                                        <strong>Změna pořadí</strong>
+                                        <p class="text-sm text-gray-600">Přeřazení úloh ve frontě - možnost upřednostnit důležité úlohy</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <span class="text-orange-600 mt-1">✅</span>
                                     <div>
-                                        <strong>Oznaceni jako hotove</strong>
-                                        <p class="text-sm text-gray-600">Manualni oznaceni ulohy jako dokoncene (napr. pri zaseku zpracovani)</p>
+                                        <strong>Označení jako hotové</strong>
+                                        <p class="text-sm text-gray-600">Manuální označení úlohy jako dokončené (např. při zaseknutí zpracování)</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <span class="text-red-600 mt-1">🗑️</span>
                                     <div>
-                                        <strong>Smazani ulohy</strong>
-                                        <p class="text-sm text-gray-600">Odstraneni ulohy z fronty</p>
+                                        <strong>Smazání úlohy</strong>
+                                        <p class="text-sm text-gray-600">Odstranění úlohy z fronty</p>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +224,7 @@
                             <span class="text-xl">💡</span>
                             <div>
                                 <h5 class="font-semibold text-yellow-900">Tip</h5>
-                                <p class="text-sm text-yellow-700 mt-1">Fronta uloh zpracovava ulohy postupne. Pokud nahrajete vice videi najednou, budou zpracovany v poradi, v jakem byly zarazeny do fronty. Kazde video musi projit vsemi 3 fazemi zpracovani (upload, YOLO detekce, SigLIP 2 analyza).</p>
+                                <p class="text-sm text-yellow-700 mt-1">Fronta úloh zpracovává úlohy postupně. Pokud nahrajete více videí najednou, budou zpracovány v pořadí, v jakém byly zařazeny do fronty. Každé video musí projít všemi 3 fázemi zpracování (upload, YOLO detekce, SigLIP 2 analýza).</p>
                             </div>
                         </div>
                     </div>
